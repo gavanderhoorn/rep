@@ -43,17 +43,18 @@ base_link
 '''''''''
 
 The coordinate frame called ``base_link`` shall be rigidly attached to the robot root body.
-For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount - and forms the root of the kinematic chain of the manipulator.
+For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount - and forms the root of the kinematic chain of the manipulator in ROS.
 
 Note that this frame does not need to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot.
 
 This frame shall follow ROS conventions for orientation of frames as set forth in REP 103 [#REP103]_.
-Discrepancies between a controller's internal Cartesian frame and REP 103 [#REP103]_ shall be resolved by defining the correct transform between ``base_link`` (or some other convenient frame) and the ``base`` frame (see next section).
+Discrepancies between a controller's internal Cartesian frame and REP 103 [#REP103]_ shall be resolved by defining the correct transform between ``base_link`` (or any other convenient frame) and the ``base`` frame (see `base`_).
 
 ``base_link`` may have geometry assigned to it, but this is not required.
 
-Rationale: this is the standard ROS ``base_link`` frame, but used in the context of industrial robots.
-No special treatment of this frame is required, but making it the root of the kinematic chain is strongly recommended.
+No further special treatment of this frame is required, but making it the root of the kinematic chain in ROS is strongly recommended.
+
+Rationale: this is the standard ROS ``base_link`` frame, but used in the context of industrial robots. As this frame is not required to be coincident with any frame of the robot controller, it can and should follow chirality and axes orientation conventions from REP 103 [#REP103]_.
 
 
 base
