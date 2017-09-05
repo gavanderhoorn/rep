@@ -161,6 +161,26 @@ The following shows an example frame hierarchy for a single serial manipulator w
          ├ tool0
          └ flange
 
+Single manipulator with EEF
+---------------------------
+
+The following shows an example frame hierarchy for a single serial manipulator with an EEF model attached to ``flange`` and an additional tool frame::
+
+  base_link
+  ├ base
+  └ link_1
+    └ link_2
+      └ ..
+        └ link_N
+          ├ tool0
+          ├ flange
+          │ └ eef_base_link
+          │   └ ..
+          │     └ eef_link_N
+          └ eef_tcp
+
+Note the ``eef_`` prefix on the links in the EEF subhierarchy to prevent name clashes.
+
 Dual manipulator
 ----------------
 
