@@ -132,7 +132,7 @@ Frame Authorities
 -----------------
 
 The frames described in this REP will typically be part of the static description of robot models encoded in urdfs or xacros.
-As such, the typical frame authority would be an instance of ``robot_state_publisher``.
+In such cases, the frame authority is expected to be an instance of ``robot_state_publisher``.
 
 
 Exceptions
