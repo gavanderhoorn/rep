@@ -125,7 +125,8 @@ Dual or Multi-arm robots
 ------------------------
 
 This REP does not specify any special conventions for robots with multiple arms/groups or kinematic chains.
-The standard approach of prefixing joint and link names to ensure uniqueness shall be used to ensure unique ``base``, ``flange`` and ``tool0`` frames for each chain (see the `Example Frame Hierarchies`_ section for an example).
+The standard approach of prefixing joint and link names to ensure uniqueness of all frames in the (combined) frame hierarchy should be used to avoid collisions.
+See the `Example Frame Hierarchies`_ section for examples of this.
 
 
 Frame Authorities
