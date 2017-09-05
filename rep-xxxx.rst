@@ -141,7 +141,7 @@ Exceptions
 ----------
 
 The scope of potential robotics software is too broad to require all ROS software to follow the guidelines of this REP.
-However, choosing different conventions should be well justified and well documented, and preferably avoided.
+However, choosing different conventions should be well justified, well documented, and is discouraged.
 
 
 Example Frame Hierarchies
