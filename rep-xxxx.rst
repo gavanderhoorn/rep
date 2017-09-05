@@ -145,10 +145,10 @@ However, choosing different conventions should be well justified and well docume
 Example Frame Hierarchies
 =========================
 
-Single arm
-----------
+Single manipulator
+------------------
 
-The following shows a typical frame hierarchy for a single serial manipulator with only the default tool frame::
+The following shows an example frame hierarchy for a single serial manipulator with just the default tool frame::
 
   base_link
   ├ base
@@ -159,10 +159,10 @@ The following shows a typical frame hierarchy for a single serial manipulator wi
          ├ tool0
          └ flange
 
-Dual arm
---------
+Dual manipulator
+----------------
 
-The following shows an example frame hierarchy for a work cell that consists of two arms::
+The following shows an example frame hierarchy for a work cell that consists of two manipulators::
 
   base_link
   ├ ..
