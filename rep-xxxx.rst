@@ -11,7 +11,7 @@ Created: 15-May-2017
 Abstract
 ========
 
-This REP specifies naming conventions and semantics for coordinate frames of industrial manipulators used with ROS.
+This REP specifies naming conventions and semantics for coordinate frames of industrial manipulators that are used with ROS.
 
 
 Motivation
@@ -21,7 +21,7 @@ Developers of packages aimed at industrial manipulators need a shared convention
 Consistent naming of frames and standardisation of semantics allow re-use of not only software but also of experience and tooling.
 
 In addition, industrial robot controllers already define a number of Cartesian coordinate frames for users to define poses in and to refer to when manually controlling the robot (i.e.: while jogging or programming using teach-in).
-In order to make it possible for ROS applications to make use of these coordinate frames in a controller- and vendor-agnostic way, this REP proposes a set of generalised frame names with associated semantics that allow for a correspondence between controller internal frames and the (TF) frames that a ROS application communicating with it might use.
+In order to make it possible for ROS applications to refer to these coordinate frames in a controller- and vendor-agnostic way, this REP proposes a set of generalised frame names with associated semantics that allow for a correspondence between controller internal frames and the (TF) frames that a ROS application communicating with it might use.
 
 REP 105 [#REP105]_ and REP 120 [#REP120]_ already define frames for mobile bases and humanoid robots.
 This REP extends the set of standardised frames in ROS and labels important locations on industrial manipulators such as the origin of the main Cartesian coordinate system, the flange and the tool centre point.
@@ -43,18 +43,18 @@ base_link
 '''''''''
 
 The coordinate frame called ``base_link`` shall be rigidly attached to the robot root body.
-For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount - and forms the root of the kinematic chain of the manipulator in ROS.
+For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount.
 
-Note that this frame does not need to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot.
+Note that this frame does not need to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot (ie: its attachment to the world).
 
-This frame shall follow ROS conventions for orientation of frames as set forth in REP 103 [#REP103]_.
+This frame shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
 Discrepancies between a controller's internal Cartesian frame and REP 103 [#REP103]_ shall be resolved by defining the correct transform between ``base_link`` (or any other convenient frame) and the ``base`` frame (see `base`_).
 
-``base_link`` may have geometry assigned to it, but this is not required.
+``base_link`` may optionally have geometry assigned to it.
 
-No further special treatment of this frame is required, but making it the root of the kinematic chain in ROS is strongly recommended.
+No further special treatment of this frame is required, but making it the root of the ROS kinematic chain is strongly recommended (as this facilitates integration with other ROS tools and infrastructure).
 
-Rationale: this is the standard ROS ``base_link`` frame, but used in the context of industrial robots. As this frame is not required to be coincident with any frame of the robot controller, it can and should follow chirality and axes orientation conventions from REP 103 [#REP103]_.
+Rationale: this is the standard ROS ``base_link`` frame, but used in the context of industrial robots. 
 
 
 base
@@ -64,7 +64,7 @@ The ``base`` frame shall be coincident with the default Cartesian coordinate sys
 Its purpose is to allow users to transform poses from a ROS application into the Cartesian base frame of the robot.
 As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 [#REP103]_.
 
-Examples of vendor-specific names for this frame are *World* (Fanuc), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Mitsubishi and Yaskawa Motoman).
+Examples of vendor-specific names for this frame are *World* (Fanuc, Staübli), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Mitsubishi and Yaskawa Motoman).
 
 Any frame is acceptable as the parent of ``base`` (so not just ``base_link``), as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint).
 
@@ -82,8 +82,8 @@ flange
 ''''''
 
 The ``flange`` frame is the frame that should be used to attach EEF models to the main kinematic chain of the robot.
-In contrast to ``tool0``, this frame shall always be oriented according to REP 103 [#REP103]_, with the positive axis (x+) pointing forward.
-This makes attaching EEF models straightfoward, as no additional rotations should be needed to align the EEF model with the robot flange link.
+In contrast to ``tool0``, this frame shall always be oriented such that it complies with REP 103 [#REP103]_.
+Positive X must always point away from the last link (ie: in the 'forward' direction for a world-aligned robot model).
 
 Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), and ``flange`` is located in the correct location and has the correct orientation.
 It is expected that in most cases ``flange`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
@@ -95,6 +95,7 @@ Some vendor-specific names for the tool frame are *FLANGE* (KUKA), TODO: finish.
 Shall not be changed.
 
 Rationale: this separates the (physical) attachment point for EEFs from the mathematical TCP frame (which don't necessarily have to coincide for all robots, and also don't need to have the same orientation).
+This makes attaching EEF models straightfoward () as no additional rotations are needed to align the EEF model with the robot flange link.
 
 
 tool0
@@ -105,21 +106,29 @@ As such, this frame is exempt from the requirement to follow orientation convent
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
 In this case the only difference between ``tool0`` and ``flange`` is the orientation.
 
-Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA), TODO: finish.
+Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA), *tool* (Staübli), TODO: finish.
 
 Any frame is acceptable as the parent of ``tool0``, as long as the transform between that parent and ``tool0`` is fixed (i.e.: not across a movable joint), and ``tool0`` is located in the correct location and has the correct orientation.
-It is expected that in most cases ``tool0`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
+It is however expected that in most cases ``tool0`` will be a child of the ``flange`` frame.
+Whenever specific configurations require this, other links may be used (suitable candidates include the 6th or 7th link in industrial serial manipulators).
 
-``tool0`` must not be changed.
-If application-specific tool frames are needed, these should be added as siblings of ``tool0``, or as part of a(n) (stand-alone) EEF definition attached to the ``flange`` frame.
+``tool0`` must not be changed - neither its location nor its orientation.
+Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF subhierarchies) and should be named appropriately (see `Application Specific Tool Frames`_).
 
-``tool0`` shall not have any geometry associated with it.
+Finally: no geometry shall be associated with ``tool0``.
 
-Rationale: 
+Rationale: by not allowing changes to the location or orientation of ``tool0``, re-use of libraries such as kinematics solvers that are generated in an off-line fashion for a particular kinematic chain configuration becomes feasible.
+It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library, or manually before submitting goal poses to the planner).
 
-By not allowing changes to the location and orientation of ``tool0``, re-use of libraries such as kinematics solvers that are generated in an off-line fashion for a particular kinematic chain configuration becomes feasible.
-It is the user's responsibility then to make sure that poses are transformed into the appropriate coordinate system before passing them on to such libraries.
-This could be done automatically by the motion planner, or manually before submitting goal poses to the planner.
+
+Application Specific Tool Frames
+--------------------------------
+
+It is strongly discouraged to use ``toolN`` names for application-specific tool frames, even if such naming is used by the robot controller.
+
+Rationale: calibration is almost always relative to ``flange`` anyway, and it facilitates reuse of existing robot and eef support pkgs ()
+
+TODO: finish.
 
 
 Dual or Multi-arm robots
@@ -151,7 +160,7 @@ Example Frame Hierarchies
 Single manipulator
 ------------------
 
-The following shows an example frame hierarchy for a single serial manipulator with just the default tool frame::
+The following shows an example frame hierarchy for a single serial manipulator. This particular example has ``base`` as a direct child of ``base_link``, the main kinematic chain starting with ``base_link`` and without any application-specific tool frame configured::
 
   base_link
   ├ base
@@ -159,13 +168,15 @@ The following shows an example frame hierarchy for a single serial manipulator w
     └ link_2
       └..
        └ link_N
-         ├ tool0
          └ flange
+           └ tool0
+
+Note also that ``tool0`` is a direct child of ``flange`` in this example.
 
 Single manipulator with EEF
 ---------------------------
 
-The following shows an example frame hierarchy for a single serial manipulator with an EEF model attached to ``flange`` and an additional tool frame::
+The following shows an example frame hierarchy for a single serial manipulator with an EEF model attached to ``flange`` and one application-specific tool frame::
 
   base_link
   ├ base
@@ -173,14 +184,16 @@ The following shows an example frame hierarchy for a single serial manipulator w
     └ link_2
       └ ..
         └ link_N
-          ├ tool0
-          ├ flange
-          │ └ eef_base_link
-          │   └ ..
-          │     └ eef_link_N
-          └ eef_tcp
+          └ flange
+            ├ tool0
+            ├ eef_base_link
+            │   └ ..
+            │     └ eef_link_N
+            └ eef_tcp
 
 Note the ``eef_`` prefix on the links in the EEF subhierarchy to prevent name clashes.
+
+Note also the ``eef_tcp``, an application specific tool frame that is a child of ``flange`` and not of ``eef_base_link`` (TODO: explain why?).
 
 Dual manipulator
 ----------------
@@ -195,8 +208,8 @@ The following shows an example frame hierarchy for a work cell that consists of 
   │   └ left_link_2
   │     └..
   │      └ left_link_N
-  │        ├ left_tool0
   │        └ left_flange
+  │          └ left_tool0
   ├ ..
   └ right_base_link
     ├ right_base
@@ -204,8 +217,10 @@ The following shows an example frame hierarchy for a work cell that consists of 
       └ right_link_2
         └..
          └ right_link_N
-           ├ right_tool0
            └ right_flange
+             └ right_tool0
+
+Note the ``base_link`` frame that forms the root of the work cell hierarchy.
 
 
 Compliance
