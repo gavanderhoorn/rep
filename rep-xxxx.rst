@@ -150,6 +150,15 @@ The standard approach of prefixing joint and link names (with a `xacro` paramete
 See the `Example Frame Hierarchies`_ section for examples of this.
 
 
+Robots with Left-handed Coordinate Systems
+------------------------------------------
+
+There are industrial manipulators that use a left-handed coordinate system for poses and in robot programming.
+ROS exclusively uses right-handed coordinate systems, as described in REP 103 [#REP103]_.
+
+As this fundamental difference cannot be resolved by using a transform, this REP recommends to overlay REP 103 compliant coordinate frames (ie: right-handed) and use conversion functions on the boundaries of ROS applications to convert data between such systems.
+
+
 Frame Authorities
 -----------------
 
