@@ -27,6 +27,17 @@ REP 105 [#REP105]_ and REP 120 [#REP120]_ already define frames for mobile bases
 This REP extends the set of standardised frames in ROS and labels important locations on serial industrial manipulators such as the origin of the main Cartesian coordinate system, the flange and the tool centre point.
 
 
+Definitions
+===========
+
+End Effector (EEF)
+    A device at the end of a robotic arm, designed to interact with the environment. The exact nature of this device depends on the application of the robot.
+End Of Arm Tooling (EOAT)
+    Alternative name for *End Effector*.
+Tool Centre Point (TCP)
+    Point in relation to which all robot positioning is defined or the origin of the tool's coordinate frame.
+
+
 Assumptions
 ===========
 
@@ -101,7 +112,7 @@ This makes attaching EEF models straightfoward () as no additional rotations are
 tool0
 '''''
 
-The ``tool0`` frame (pronounced: "tool-zero") shall match exactly an *all-zeros* Tool Centre Point (TCP) as defined by the robot controller.
+The ``tool0`` frame (pronounced: "tool-zero") shall match exactly an *all-zeros* TCP as defined by the robot controller.
 As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 [#REP103]_.
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
 In this case the only difference between ``tool0`` and ``flange`` is the orientation.
