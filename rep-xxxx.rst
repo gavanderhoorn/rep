@@ -131,11 +131,11 @@ Rationale: calibration is almost always relative to ``flange`` anyway, and it fa
 TODO: finish.
 
 
-Dual or Multi-arm robots
-------------------------
+Dual-arm or Multi-group Robots
+------------------------------
 
-This REP does not specify any special conventions for robots with multiple arms/groups or kinematic chains.
-The standard approach of prefixing joint and link names to ensure uniqueness of all frames in the (combined) frame hierarchy should be used to avoid collisions.
+This REP does not specify any special conventions for robots with multiple arms, motion groups or kinematic chains.
+The standard approach of prefixing joint and link names (with a `xacro` parameter for instance) to ensure uniqueness of all frames in the (combined) frame hierarchy should be used to avoid collisions.
 See the `Example Frame Hierarchies`_ section for examples of this.
 
 
@@ -157,70 +157,92 @@ However, choosing different conventions should be well justified, well documente
 Example Frame Hierarchies
 =========================
 
+This section shows a number of example frame hierarchies representative of typical kinematic configurations in industrial robotics and related contexts.
+
 Single manipulator
 ------------------
 
-The following shows an example frame hierarchy for a single serial manipulator. This particular example has ``base`` as a direct child of ``base_link``, the main kinematic chain starting with ``base_link`` and without any application-specific tool frame configured::
+The following shows an example frame hierarchy for a single serial manipulator.
+This particular example has ``base`` as a direct child of ``base_link``, the main kinematic chain starting with ``base_link`` and does not have any application-specific tool frame configured (ie: only has the default ``tool0`` frame)::
 
   base_link
   ├ base
   └ link_1
-    └ link_2
-      └..
-       └ link_N
-         └ flange
-           └ tool0
-
-Note also that ``tool0`` is a direct child of ``flange`` in this example.
+    └ ..
+      └ link_N
+        └ flange
+          └ tool0
 
 Single manipulator with EEF
 ---------------------------
 
-The following shows an example frame hierarchy for a single serial manipulator with an EEF model attached to ``flange`` and one application-specific tool frame::
+The following shows an example frame hierarchy for a single serial manipulator with an EEF model attached to ``flange`` and one application-specific tool frame (``eef_tcp``)::
 
   base_link
   ├ base
   └ link_1
-    └ link_2
-      └ ..
-        └ link_N
-          └ flange
-            ├ tool0
-            ├ eef_base_link
-            │   └ ..
-            │     └ eef_link_N
-            └ eef_tcp
+    └ ..
+      └ link_N
+        └ flange
+          ├ tool0
+          ├ eef_base_link
+          │   └ ..
+          │     └ eef_link_N
+          └ eef_tcp
 
-Note the ``eef_`` prefix on the links in the EEF subhierarchy to prevent name clashes.
+Note the ``eef_`` prefix on the links in the EEF subhierarchy to prevent name clashes with the main robot model.
 
-Note also the ``eef_tcp``, an application specific tool frame that is a child of ``flange`` and not of ``eef_base_link`` (TODO: explain why?).
+Note also that ``eef_tcp`` is a child of ``flange`` and not of ``eef_base_link`` (TODO: explain why?).
 
-Dual manipulator
-----------------
+Multi-group (asymetric)
+-----------------------
 
-The following shows an example frame hierarchy for a work cell that consists of two manipulators::
+An example frame hierarchy for a setup that consists of two groups, a 6 axis industrial manipulator and a 2 axis positioner (or turntable).
+
+Both are placed in the same work cell and share a common ``world`` frame::
+
+  world
+  ├ ..
+  ├ robot_base_link
+  │ ├ robot_base
+  │ └ robot_link_1
+  │   └ ..
+  │     └ robot_link_N
+  │       └ robot_flange
+  │         └ robot_tool0
+  └ positioner_base_link
+    ├ positioner_base
+    └ positioner_link_1
+       └ positioner_link_2
+         └ positioner_flange
+           └ positioner_tool0
+
+Note the ``robot_`` and ``positioner_`` prefixes on all frames.
+
+Multi-group (symmetric)
+-----------------------
+
+The following shows an example frame hierarchy for a dual-arm robot that consists of two identical manipulators that are mirrored around a shared base.
+Each arm sub-hierarchy has been given a prefix corresponding to its relative position::
 
   base_link
-  ├ ..
+  ├ base
   ├ left_base_link
   │ ├ left_base
   │ └ left_link_1
-  │   └ left_link_2
-  │     └..
-  │      └ left_link_N
-  │        └ left_flange
-  │          └ left_tool0
-  ├ ..
+  │   └ ..
+  │     └ left_link_N
+  │       └ left_flange
+  │         └ left_tool0
   └ right_base_link
     ├ right_base
     └ right_link_1
-      └ right_link_2
-        └..
-         └ right_link_N
-           └ right_flange
-             └ right_tool0
+      └ ..
+        └ right_link_N
+          └ right_flange
+            └ right_tool0
 
-Note the ``base_link`` frame that forms the root of the work cell hierarchy.
+Note that ``base_link`` in this example is the root of the entire robot structure and should be used when placing the robot in a larger assembly.
 
 
 Compliance
