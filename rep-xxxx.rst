@@ -21,7 +21,7 @@ Developers of packages aimed at serial industrial manipulators need a shared con
 Consistent naming of frames and standardisation of semantics allow re-use of not only software but also of experience and tooling.
 
 In addition, industrial robot controllers already define a number of Cartesian coordinate frames for users to define poses in and to refer to when manually controlling the robot (i.e.: while jogging or programming using teach-in).
-In order to make it possible for ROS applications to refer to these coordinate frames in a controller- and vendor-agnostic way, this REP proposes a set of generalised frame names with associated semantics that allow for a correspondence between controller internal frames and the (TF) frames that a ROS application communicating with it might use.
+In order to make it possible for ROS applications to refer to these coordinate frames in a controller and vendor-agnostic way, this REP proposes a set of generalised frame names with associated semantics that allow for a correspondence between controller internal frames and the (TF) frames that a ROS application communicating with it might use.
 
 REP 105 [#REP105]_ and REP 120 [#REP120]_ already define frames for mobile bases and humanoid robots.
 This REP extends the set of standardised frames in ROS and labels important locations on serial industrial manipulators such as the origin of the main Cartesian coordinate system, the flange and the tool centre point.
