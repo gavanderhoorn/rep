@@ -89,6 +89,24 @@ This complicates expressing poses in robot-relative frames, as arbitrary transfo
 The ``base`` frame is intended to be used as an intermediary or bridge and provides a mapping that links the ROS TF tree with the controller- and vendor-specific coordinate systems and as an abstraction that decreases coupling between applications and specific robot urdfs.
 
 
+link_n
+''''''
+
+``link`` frames should be used for all link-local frames in the robot's kinematic chain.
+As almost all manipulators are expected to require multiple such frames, each should be suffixed with an integer number corresponding to the natural order of the frame in the chain from ``base_link`` to ``flange``.
+
+
+These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
+
+If desirable, discrepancies between a controller's internal link-local frames and REP 103 [#REP103]_ may be resolved by defining a rigid transform between ``link_n`` and a suitably named proxy-frame.
+
+
+
+
+Rationale: could follow mfgs naming, but that reduces reusability of code written 'against' naming convention of a certain mfg. Names are 'implementation detail' of mfg. Vendor-independence is broken by allowing custom names.
+Allows for link-local coordinate transformations between ROS and mfgs.
+
+
 flange
 ''''''
 
@@ -233,9 +251,9 @@ Both are placed in the same work cell and share a common ``world`` frame::
   └ positioner_base_link
     ├ positioner_base
     └ positioner_link_1
-       └ positioner_link_2
-         └ positioner_flange
-           └ positioner_tool0
+      └ positioner_link_2
+        └ positioner_flange
+          └ positioner_tool0
 
 Note the ``robot_`` and ``positioner_`` prefixes on all frames.
 
