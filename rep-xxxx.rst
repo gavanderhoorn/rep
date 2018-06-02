@@ -289,13 +289,6 @@ Compliance
 This REP depends on and is compliant with REP 103 [#REP103]_, except where stated otherwise.
 
 
-Questions
-=========
-
-#. are there robots that do not have ``tool0`` defined as a child of ``flange`` (I seem to remember some brand having ``tool0`` defined relative to the last link/joint, which was not the flange)? If not: make ``tool0`` child of ``flange``. Otherwise keep ``tool0`` a sibling of ``flange``.
-#. should we discourage naming additional frames ``toolN`` (ie: ``tool1``, ``tool2``, etc)? Such names carry no semantics (frame purpose only known out-of-band), and all names in ROS should be as descriptive as possible.
-
-
 References
 ==========
 
