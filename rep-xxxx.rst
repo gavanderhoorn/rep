@@ -77,7 +77,7 @@ As such, this frame is exempt from the requirement to follow orientation convent
 
 Examples of vendor-specific names for this frame are *World* (Fanuc, Staübli), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Mitsubishi and Yaskawa Motoman).
 
-Any frame is acceptable as the parent of ``base`` (so not just ``base_link``), as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint).
+Any frame is acceptable as the parent of ``base`` (so not just ``base_link``), as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint) and the location and orientation of the frame always correspond to the controller's internal default Cartesian frame.
 
 ``base`` shall not have any geometry associated with it.
 
@@ -93,18 +93,22 @@ link_n
 ''''''
 
 ``link`` frames should be used for all link-local frames in the robot's kinematic chain.
-As almost all manipulators are expected to require multiple such frames, each should be suffixed with an integer number corresponding to the natural order of the frame in the chain from ``base_link`` to ``flange``.
-
+As almost all manipulators are expected to require multiple such frames, each should be suffixed with a non-negative integer corresponding to the natural order of the frame in the chain from ``base_link`` to ``flange`` (ie: ``link_1``, ``link_2``, .., ``link_n; n ∈ ℕ``).
 
 These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
-
 If desirable, discrepancies between a controller's internal link-local frames and REP 103 [#REP103]_ may be resolved by defining a rigid transform between ``link_n`` and a suitably named proxy-frame.
 
+If similar frames are defined by the robot controller, authors should strive to make the location of ``link`` frames coincident with those frames, if they are externally accessible and/or usable for these purposes.
 
+``link`` frames are expected to have robot geometry associated with them (as they provide a natural location for it), but this is not required.
 
+Rationale: naming schemes for links and joints can vary between industrial robot manufacturers and even between robot series produced by the same manufacturer.
+Allowing authors to import such implementation details into their robot models would immediately reduce reusability of both the models as well as of applications, as the latter would have to be made aware of the specific naming scheme being used (either through configuration or code adaptation).
+Introducing a vendor-neutral naming scheme avoids this.
 
-Rationale: could follow mfgs naming, but that reduces reusability of code written 'against' naming convention of a certain mfg. Names are 'implementation detail' of mfg. Vendor-independence is broken by allowing custom names.
-Allows for link-local coordinate transformations between ROS and mfgs.
+In addition, harmonising link frame names across ROS supported (industrial) robots also allows users to make assumptions about such names and their semantics, facilitating development.
+
+Finally: making ``link`` frames coincident with their counterparts on a robot controller allows such frames to be used as an intermediary or bridge and provides a mapping that links the ROS TF tree with controller- and vendor-specific coordinate systems.
 
 
 flange
@@ -121,10 +125,10 @@ Some vendor-specific names for the tool frame are *FLANGE* (KUKA), TODO: finish.
 
 ``flange`` shall not have any geometry associated with it.
 
-Shall not be changed.
+This frame shall also not be changed by users.
 
 Rationale: this separates the (physical) attachment point for EEFs from the mathematical TCP frame (which don't necessarily have to coincide for all robots, and also don't need to have the same orientation).
-This makes attaching EEF models straightfoward () as no additional rotations are needed to align the EEF model with the robot flange link.
+This makes attaching EEF models straightfoward as no additional rotations are needed to align the EEF model with the robot flange link.
 
 
 tool0
