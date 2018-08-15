@@ -143,7 +143,7 @@ Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (
 
 Any frame is acceptable as the parent of ``tool0``, as long as the transform between that parent and ``tool0`` is fixed (i.e.: not across a movable joint), and ``tool0`` is located in the correct location and has the correct orientation.
 It is however expected that in most cases ``tool0`` will be a child of the ``flange`` frame.
-Whenever specific configurations require this, other links may be used (suitable candidates include the 6th or 7th link in industrial serial manipulators).
+Whenever specific configurations require this other links may be used, but such deviations should be well justified and well documented (suitable candidates include the 6th or 7th link of industrial serial manipulators).
 
 ``tool0`` must not be changed - neither its location nor its orientation.
 Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF subhierarchies) and should be named appropriately (see `Application Specific Tool Frames`_).
