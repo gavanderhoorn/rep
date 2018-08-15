@@ -148,7 +148,7 @@ Whenever specific configurations require this other links may be used, but such 
 ``tool0`` must not be changed - neither its location nor its orientation.
 Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF subhierarchies) and should be named appropriately (see `Application Specific Tool Frames`_).
 
-Finally: no geometry shall be associated with ``tool0``.
+``tool0`` shall not have any geometry associated with it.
 
 Rationale: by not allowing changes to the location or orientation of ``tool0``, re-use of libraries such as kinematics solvers that are generated in an off-line fashion for a particular kinematic chain configuration becomes feasible.
 It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library, or manually before submitting goal poses to the planner).
