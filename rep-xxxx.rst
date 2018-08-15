@@ -152,6 +152,7 @@ Instead, application-specific tool frames should be added as siblings of ``tool0
 
 Rationale: by not allowing changes to the location or orientation of ``tool0``, re-use of libraries such as kinematics solvers that are generated in an off-line fashion for a particular kinematic chain configuration becomes feasible.
 It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library, or manually before submitting goal poses to the planner).
+Additionally: the purpose of ``tool0`` is to encode the location of an all-zeros or unconfigured tool frame. As such, any changes to it would make it no longer a default frame and would defeat its purpose.
 
 
 Application Specific Tool Frames
