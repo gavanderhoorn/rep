@@ -324,6 +324,18 @@ References
 .. [8] Working with ROS-Industrial Robot Support Packages
    (http://wiki.ros.org/Industrial/Tutorials/WorkingWithRosIndustrialRobotSupportPackages)
 
+.. [#abb_rapid] ABB, Rapid Reference Manual
+.. [#comau_pdl2] Comau, PDL2, Programming Language Manual
+.. [#denso_pac] DENSO Robot, PAC Programmer's Manual, Program Design and Commands
+.. [#epson_spelp] EPSON, RC+, SPEL Language Reference
+.. [#r30ia_handlingtool] FANUC Robot Series, R-30iA, Handling Tool, Operator's Manual
+.. [#r30ia_karel] FANUC Robot series, R-30iA, KAREL Function, Operator's Manual
+.. [#kuka_krl] KUKA Roboter, System Software, Operating and Programming Instructions for System Integrators
+.. [#staubli_val3] Stäubli, VAL3 Reference Manual
+.. [#urscript_manual] Universal Robots, The URScript Programming Language
+.. [#motoman_inform] Yaskawa, Motoman, Instructions for Inform Language
+.. [#motoman_motoplus] Yaskawa, Motoman, Motoplus Reference (API Function Specifications)
+
 
 Copyright
 =========
