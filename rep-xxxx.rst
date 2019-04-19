@@ -75,7 +75,7 @@ The ``base`` frame shall be coincident with the default Cartesian coordinate sys
 Its purpose is to allow users to transform poses from a ROS application into the Cartesian base frame of the robot.
 As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 [#REP103]_.
 
-Examples of vendor-specific names for this frame are *World* (Fanuc, Staübli), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Mitsubishi and Yaskawa Motoman).
+Examples of vendor-specific names for this frame are *World* (Fanuc, Staübli), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Kawasaki, Mitsubishi and Yaskawa Motoman).
 
 Any frame is acceptable as the parent of ``base`` (so not just ``base_link``), as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint) and the location and orientation of the frame always correspond to the controller's internal default Cartesian frame.
 
@@ -139,7 +139,7 @@ As such, this frame is exempt from the requirement to follow orientation convent
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
 In this case the only difference between ``tool0`` and ``flange`` is the orientation.
 
-Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA), *tool* (Staübli), TODO: finish.
+Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA), *tool* (Kawasaki, Staübli), TODO: finish.
 
 Any frame is acceptable as the parent of ``tool0``, as long as the transform between that parent and ``tool0`` is fixed (i.e.: not across a movable joint), and ``tool0`` is located in the correct location and has the correct orientation.
 It is however expected that in most cases ``tool0`` will be a child of the ``flange`` frame.
