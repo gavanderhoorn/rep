@@ -11,20 +11,21 @@ Created: 15-May-2018
 Abstract
 ========
 
-This REP specifies naming conventions and semantics for coordinate frames of serial industrial manipulators that are used with ROS.
+This REP specifies naming conventions and semantics for coordinate frames and links of serial industrial manipulators that are used with ROS.
 
 
 Motivation
 ==========
 
 Developers of packages aimed at serial industrial manipulators need a shared convention for coordinate frames in order to better integrate and re-use software components.
-Consistent naming of frames and standardisation of semantics allow re-use of not only software but also of experience and tooling.
+Consistent naming of frames and standardisation of semantics allows for re-use of not only software but also of experience and tooling.
 
-In addition, industrial robot controllers already define a number of Cartesian coordinate frames for users to define poses in and to refer to when manually controlling the robot (i.e.: while jogging or programming using teach-in).
+In addition, commercially available industrial robot controllers already define a number of Cartesian coordinate frames for users to define poses in and to refer to when manually controlling the robot (i.e.: while jogging or programming using teach-in).
 In order to make it possible for ROS applications to refer to these coordinate frames in a controller and vendor-agnostic way, this REP proposes a set of generalised frame names with associated semantics that allow for a correspondence between controller internal frames and the (TF) frames that a ROS application communicating with it might use.
 
 REP 105 [#REP105]_ and REP 120 [#REP120]_ already define frames for mobile bases and humanoid robots.
 This REP extends the set of standardised frames in ROS and labels important locations on serial industrial manipulators such as the origin of the main Cartesian coordinate system, the flange and the tool centre point.
+Finally, it provides naming guidelines for intermediate link frames and application specific tool frames.
 
 
 Definitions
@@ -63,9 +64,10 @@ Discrepancies between a controller's internal Cartesian frame and REP 103 [#REP1
 
 ``base_link`` may optionally have geometry assigned to it.
 
-No further special treatment of this frame is required, but making it the root of the ROS kinematic chain is strongly recommended (as this facilitates integration with other ROS tools and infrastructure).
+No further special treatment of this frame is required.
 
-Rationale: this is the standard ROS ``base_link`` frame, but used in the context of industrial robots. 
+Rationale: this is the standard ROS ``base_link`` frame, but used in the context of industrial robots.
+As this frame is by convention considered the start of a ROS kinematic (sub) chain, using it in the same way in models of serial manipulators is strongly recommended, as this facilitates integration with other ROS tools and infrastructure.
 
 
 base
