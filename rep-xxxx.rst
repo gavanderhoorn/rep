@@ -245,7 +245,8 @@ The following shows an example frame hierarchy for a single serial manipulator w
 
 Note the '``eef_``' prefix on the links in the EEF subhierarchy to prevent name clashes with the main robot model.
 
-Note also that ``eef_tcp`` is a child of ``flange`` and not of ``eef_base_link`` (TODO: explain why?).
+Note also that ``eef_tcp`` is a child of ``flange`` and not of ``eef_base_link``.
+This is in accordance with `Application-Specific Tool Frames`_, as the EEF's TCP (in this example) is the result of a three-point calibration which was performed relative to the flange of the robot.
 
 Multi-group (asymetric)
 -----------------------
