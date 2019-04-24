@@ -98,7 +98,7 @@ link_n
 As almost all manipulators are expected to require multiple such frames, each should be suffixed with a non-negative integer corresponding to the natural order of the frame in the chain from ``base_link`` to ``flange`` (ie: ``link_1``, ``link_2``, .., ``link_n; n ∈ ℕ``).
 
 These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
-If desirable, discrepancies between a controller's internal link-local frames and REP 103 [#REP103]_ may be resolved by defining a rigid transform between ``link_n`` and a suitably named proxy-frame.
+If desirable, discrepancies between a controller's internal link-local frames and REP 103 [#REP103]_ may be resolved by defining a rigid transform between ``link_n`` and a suitably named proxy-frame (see `Robots with Left-handed Coordinate Systems`_ for instance).
 
 If similar frames are defined by the robot controller, authors should strive to make the location of ``link`` frames coincident with those frames, if they are externally accessible and/or usable for these purposes.
 
@@ -118,7 +118,7 @@ flange
 
 The ``flange`` frame is the frame that should be used to attach EEF models to the main kinematic chain of the robot.
 In contrast to ``tool0``, this frame shall always be oriented such that it complies with REP 103 [#REP103]_.
-Positive X must always point away from the last link (ie: in the 'forward' direction for a world-aligned robot model).
+Positive X (``x+``) must always point away from the last link (ie: in the 'forward' direction for a world-aligned robot model).
 
 Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), and ``flange`` is located in the correct location and has the correct orientation.
 It is expected that in most cases ``flange`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
@@ -153,8 +153,9 @@ Instead, application-specific tool frames should be added as siblings of ``tool0
 ``tool0`` shall not have any geometry associated with it.
 
 Rationale: by not allowing changes to the location or orientation of ``tool0``, re-use of libraries such as kinematics solvers that are generated in an off-line fashion for a particular kinematic chain configuration becomes feasible.
-It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library, or manually before submitting goal poses to the planner).
-Additionally: the purpose of ``tool0`` is to encode the location of an all-zeros or unconfigured tool frame. As such, any changes to it would make it no longer a default frame and would defeat its purpose.
+It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library based on configuration by the user, or manually before submitting goal poses to the planner).
+Additionally: the purpose of ``tool0`` is to encode the location of an all-zeros or unconfigured tool frame.
+As such, any changes to it would make it no longer a default frame and would defeat its purpose.
 
 
 Application-Specific Tool Frames
@@ -242,7 +243,7 @@ The following shows an example frame hierarchy for a single serial manipulator w
           │     └ eef_link_N
           └ eef_tcp
 
-Note the ``eef_`` prefix on the links in the EEF subhierarchy to prevent name clashes with the main robot model.
+Note the '``eef_``' prefix on the links in the EEF subhierarchy to prevent name clashes with the main robot model.
 
 Note also that ``eef_tcp`` is a child of ``flange`` and not of ``eef_base_link`` (TODO: explain why?).
 
@@ -269,7 +270,7 @@ Both are placed in the same work cell and share a common ``world`` frame::
         └ positioner_flange
           └ positioner_tool0
 
-Note the ``robot_`` and ``positioner_`` prefixes on all frames.
+Note the '``robot_``' and '``positioner_``' prefixes on all frames.
 
 Multi-group (symmetric)
 -----------------------
@@ -294,7 +295,7 @@ Each arm sub-hierarchy has been given a prefix corresponding to its relative pos
           └ right_flange
             └ right_tool0
 
-Note that ``base_link`` in this example is the root of the entire robot structure and should be used when placing the robot in a larger assembly.
+Note that ``base_link`` in this example is the root of the entire robot structure and should be used when integrating the robot into a larger assembly.
 
 
 Compliance
