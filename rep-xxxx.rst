@@ -148,7 +148,7 @@ It is however expected that in most cases ``tool0`` will be a child of the ``fla
 Whenever specific configurations require this other links may be used, but such deviations should be well justified and well documented (suitable candidates include the 6th or 7th link of industrial serial manipulators).
 
 ``tool0`` must not be changed - neither its location nor its orientation.
-Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF subhierarchies) and should be named appropriately (see `Application Specific Tool Frames`_).
+Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF subhierarchies) and should be named appropriately (see `Application-Specific Tool Frames`_).
 
 ``tool0`` shall not have any geometry associated with it.
 
@@ -157,14 +157,21 @@ It is the user's responsibility then to make sure that poses are transformed to 
 Additionally: the purpose of ``tool0`` is to encode the location of an all-zeros or unconfigured tool frame. As such, any changes to it would make it no longer a default frame and would defeat its purpose.
 
 
-Application Specific Tool Frames
+Application-Specific Tool Frames
 --------------------------------
 
-It is strongly discouraged to use ``toolN`` names for application-specific tool frames, even if such naming is used by the robot controller.
+It is strongly discouraged to use ``toolN`` names for application-specific tool frames, even if such a naming scheme is used by the robot controller(s) an application targets.
+These names have very little semantic value, and the purpose of such TF frames cannot be properly understood without access to additional information external to a model itself.
 
-Rationale: calibration is almost always relative to ``flange`` anyway, and it facilitates reuse of existing robot and eef support pkgs ()
+Names with low semantic value are to be avoided in general, but in the case of robot tool frames this is especially important: use of an incorrect tool frame alone could lead to unexpected motion planning results which when executed could result in dangerous situations.
 
-TODO: finish.
+Users should therefor introduce additional frames to function as tool frames and give them appropriate names.
+Any name is acceptable, as long as it is semantically meaningful and follows the naming guidelines for ROS resources as described in [#wiki_naming]_.
+
+As explained in the `tool0`_ section, application-specific tool frames should be made siblings of the ``tool0`` frame and, as such, children of ``flange``.
+Not using ``tool0`` as parent avoids introducing additional rotations (to resolve alignment issues due to ``tool0`` not adhering to REP-103) and facilitates reuse of frame data imported from robot controllers and external devices (such as tool frame calibration results, as such results are often relative to the robot's flange).
+
+Finally: while this REP cannot prevent users from using names with low semantic value, ignoring this recommendation should be well justified and documented.
 
 
 Dual-arm or Multi-group Robots
@@ -325,6 +332,9 @@ References
 
 .. [8] Working with ROS-Industrial Robot Support Packages
    (http://wiki.ros.org/Industrial/Tutorials/WorkingWithRosIndustrialRobotSupportPackages)
+
+.. [#wiki_naming] Names, ROS wiki, on-line, retrieved 24 April 2016
+   (http://wiki.ros.org/Names)
 
 .. [#abb_rapid] ABB, Rapid Reference Manual
 .. [#comau_pdl2] Comau, PDL2, Programming Language Manual
