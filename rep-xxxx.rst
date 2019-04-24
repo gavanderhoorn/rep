@@ -141,7 +141,7 @@ As such, this frame is exempt from the requirement to follow orientation convent
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
 In this case the only difference between ``tool0`` and ``flange`` is the orientation.
 
-Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA), *tool* (Kawasaki, Staübli), TODO: finish.
+Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA) and *tool* (Kawasaki, Staübli).
 
 Any frame is acceptable as the parent of ``tool0``, as long as the transform between that parent and ``tool0`` is fixed (i.e.: not across a movable joint), and ``tool0`` is located in the correct location and has the correct orientation.
 It is however expected that in most cases ``tool0`` will be a child of the ``flange`` frame.
