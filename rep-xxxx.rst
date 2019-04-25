@@ -43,7 +43,7 @@ Tool Centre Point (TCP)
 Assumptions
 ===========
 
-#. The key words *must*, *must not*, *required*, *shall*, *shall not*, *should*, *should not*, *recommended*, *may*, and *optional* in this document are to be interpreted as defined in RFC-2119 [#RFC2119]_.
+#. The key words *must*, *must not*, *required*, *shall*, *shall not*, *should*, *should not*, *recommended*, *may*, and *optional* in this document are to be interpreted as defined in [#RFC2119]_.
 
 
 Specification
@@ -171,7 +171,7 @@ Users should therefor introduce additional frames to function as tool frames and
 Any name is acceptable, as long as it is semantically meaningful and follows the naming guidelines for ROS resources as described in [#wiki_naming]_.
 
 As explained in the `tool0`_ section, application-specific tool frames should be made siblings of the ``tool0`` frame and, as such, children of ``flange``.
-Not using ``tool0`` as parent avoids introducing additional rotations (to resolve alignment issues due to ``tool0`` not adhering to REP-103) and facilitates reuse of frame data imported from robot controllers and external devices (such as tool frame calibration results, as such results are often relative to the robot's flange).
+Not using ``tool0`` as parent avoids introducing additional rotations (to resolve alignment issues due to ``tool0`` not adhering to REP 103 [#REP103]_) and facilitates reuse of frame data imported from robot controllers and external devices (such as tool frame calibration results, as such results are often relative to the robot's flange).
 
 Finally: while this REP cannot prevent users from using names with low semantic value, ignoring this recommendation should be well justified and documented.
 
@@ -190,7 +190,7 @@ Robots with Left-handed Coordinate Systems
 There are industrial manipulators that use a left-handed coordinate system for poses and in robot programming.
 ROS exclusively uses a right-handed coordinate system, as described in REP 103 [#REP103]_.
 
-As this fundamental difference cannot be resolved by using a transform, this REP recommends to overlay REP 103 compliant coordinate frames (ie: right-handed) and use conversion functions on the boundaries of ROS applications to convert data between such systems.
+As this fundamental difference cannot be resolved by using a transform, this REP recommends to overlay REP 103 [#REP103]_ compliant coordinate frames (ie: right-handed) and use conversion functions on the boundaries of ROS applications to convert data between such systems.
 
 
 Frame Authorities
