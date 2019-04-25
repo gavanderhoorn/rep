@@ -78,8 +78,6 @@ The ``base`` frame shall be coincident with the default Cartesian coordinate sys
 Its purpose is to allow users to transform poses from a ROS application into the Cartesian base frame of the robot.
 As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 [#REP103]_.
 
-Examples of vendor-specific names for this frame are *World* (Fanuc, Staübli), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Kawasaki, Mitsubishi and Yaskawa Motoman).
-
 Any frame is acceptable as the parent of ``base``, as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint) and the location and orientation of the frame always correspond to the controller's internal default Cartesian frame.
 As many serial manipulators share a common design, it is expected however that ``base_link`` will often be the parent of ``base``, connected by a ``fixed`` joint with a suitable transform.
 
@@ -91,6 +89,8 @@ Frame hierarchies must however support transforms from anywhere in the chain to 
 Rationale: for many industrial robots, the location of the ROS ``base_link`` frame is not necessarily coincident with the origin of their main Cartesian coordinate system.
 This complicates expressing poses in robot-relative frames, as arbitrary transformations could be required for different makes and models of robots.
 The ``base`` frame is intended to be used as an intermediary or bridge and provides a mapping that links the ROS TF tree with the controller- and vendor-specific coordinate systems and as an abstraction that decreases coupling between applications and specific robot urdfs.
+
+Refer to `Vendor Nomenclature Mapping`_ for examples of vendor-specific names for this frame.
 
 
 link_n
@@ -125,8 +125,6 @@ Positive X (``x+``) must always point away from the last link (ie: in the 'forwa
 Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), and ``flange`` is located in the correct location and has the correct orientation.
 It is expected that in most cases ``flange`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
 
-Some vendor-specific names for the tool frame are *FLANGE* (KUKA), TODO: finish.
-
 ``flange`` shall not have any geometry associated with it.
 
 This frame shall also not be changed by users.
@@ -143,8 +141,6 @@ As such, this frame is exempt from the requirement to follow orientation convent
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
 In this case the only difference between ``tool0`` and ``flange`` is the orientation.
 
-Some vendor-specific names for the tool frame are *Tool Frame* (Fanuc), *TOOL* (KUKA) and *tool* (Kawasaki, Staübli).
-
 Any frame is acceptable as the parent of ``tool0``, as long as the transform between that parent and ``tool0`` is fixed (i.e.: not across a movable joint), and ``tool0`` is located in the correct location and has the correct orientation.
 It is however expected that in most cases ``tool0`` will be a child of the ``flange`` frame.
 Whenever specific configurations require this other links may be used, but such deviations should be well justified and well documented (suitable candidates include the 6th or 7th link of industrial serial manipulators).
@@ -158,6 +154,8 @@ Rationale: by not allowing changes to the location or orientation of ``tool0``, 
 It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library based on configuration by the user, or manually before submitting goal poses to the planner).
 Additionally: the purpose of ``tool0`` is to encode the location of an all-zeros or unconfigured tool frame.
 As such, any changes to it would make it no longer a default frame and would defeat its purpose.
+
+Refer to `Vendor Nomenclature Mapping`_ for examples of vendor-specific names for this frame.
 
 
 Application-Specific Tool Frames
@@ -301,6 +299,63 @@ Each arm sub-hierarchy has been given a prefix corresponding to its relative pos
 Note that ``base_link`` in this example is the root of the entire robot structure and should be used when integrating the robot into a larger assembly.
 
 
+Vendor Nomenclature Mapping
+===========================
+
+This section lists the correspondance between vendor-specific frame nomenclature and the frame names as defined by this REP.
+
+Note that for most vendors, ``tool0`` corresponds to an *all-zeros* tool frame configuration as described in the `tool0`_ section.
+The names listed here in the *Vendor Name* column refer to the generic names for frames as used in the documentation of the control systems of the respective vendors instead of specific configurations for those settings or variables.
+
++------------------+------------+---------------+
+|                  | This REP   | Vendor Name   |
++==================+============+===============+
+| ABB              | ``base``   | Base          |
+| [#abb_opman]_    +------------+---------------+
+|                  | ``tool0``  | TCP           |
++------------------+------------+---------------+
+| Comau            | ``base``   | ``$BASE``     |
+| [#comau_progg]_  +------------+---------------+
+|                  | ``tool0``  | ``$TOOL``     |
++------------------+------------+---------------+
+| Denso            | ``base``   | Base          |
+| [#denso_pac]_    +------------+---------------+
+|                  | ``tool0``  | Tool          |
++------------------+------------+---------------+
+| Epson            | ``base``   | Robot         |
+| [#epson_uguide]_ +------------+---------------+
+|                  | ``tool0``  | TOOL 0        |
++------------------+------------+---------------+
+| Fanuc            | ``base``   | WORLD         |
+| [#fanuc_htool]_  +------------+---------------+
+|                  | ``tool0``  | TOOL          |
++------------------+------------+---------------+
+| Kawasaki         | ``base``   | Base          |
+| [#kawa_opman]_   +------------+---------------+
+|                  | ``tool0``  | Tool          |
++------------------+------------+---------------+
+| KUKA             | ``base``   | ``$ROBROOT``  |
+| [#kuka_kss]_     +------------+---------------+
+|                  | ``tool0``  | ``$TOOL``     |
++------------------+------------+---------------+
+| Mitsubishi       | ``base``   | Base          |
+| [#mitsu_insman]_ +------------+---------------+
+|                  | ``tool0``  | Tool          |
++------------------+------------+---------------+
+| Staübli          | ``base``   | World         |
+| [#staubli_val3]_ +------------+---------------+
+|                  | ``tool0``  | tool          |
++------------------+------------+---------------+
+| Universal        | ``base``   | Base          |
+| Robots           +------------+---------------+
+| [#ur_psman]_     | ``tool0``  | Tool          |
++------------------+------------+---------------+
+| Yaskawa          | ``base``   | Robot         |
+| Motoman          +------------+---------------+
+| [#yask_fs100om]_ | ``tool0``  | Tool          |
++------------------+------------+---------------+
+
+
 Compliance
 ==========
 
@@ -340,17 +395,17 @@ References
 .. [#wiki_naming] Names, ROS wiki, on-line, retrieved 24 April 2016
    (http://wiki.ros.org/Names)
 
-.. [#abb_rapid] ABB, Rapid Reference Manual
-.. [#comau_pdl2] Comau, PDL2, Programming Language Manual
+.. [#abb_opman] ABB Robotics, Operating Manual, RobotStudio, 5.14, 3HAC032104-001, Revision F
+.. [#comau_progg] Comau Robotics Instruction Handbook, C5G Controller Unit, MOTION PROGRAMMING, System Software Rel. 1.10, CR00757608_en-04/2011.07
 .. [#denso_pac] DENSO Robot, PAC Programmer's Manual, Program Design and Commands
-.. [#epson_spelp] EPSON, RC+, SPEL Language Reference
-.. [#r30ia_handlingtool] FANUC Robot Series, R-30iA, Handling Tool, Operator's Manual
-.. [#r30ia_karel] FANUC Robot series, R-30iA, KAREL Function, Operator's Manual
-.. [#kuka_krl] KUKA Roboter GmbH, KUKA System Software 8.3, Operating and Programming Instructions for System Integrators
+.. [#epson_uguide] EPSON, RC+ 5.0, User's Guide, Project Management and Development, Ver.5.4, EM135S2513F
+.. [#fanuc_htool] FANUC Robot Series, R-30iA, Handling Tool, Operator's Manual
+.. [#kawa_opman] Kawasaki Heavy Industries, Ltd., Kawasaki Robot Controller, E Series, Operation Manual, 90203-1104DED
+.. [#kuka_kss] KUKA Roboter GmbH, KUKA System Software 8.3, Operating and Programming Instructions for System Integrators
+.. [#mitsu_insman] MITSUBISHI, Mitsubishi Industrial Robot, CR750/CR751 Series Controller, INSTRUCTION MANUAL, BFP-A8869-D
 .. [#staubli_val3] Stäubli, VAL3 Reference Manual
-.. [#urscript_manual] Universal Robots, The URScript Programming Language
-.. [#motoman_inform] Yaskawa, Motoman, Instructions for Inform Language
-.. [#motoman_motoplus] Yaskawa, Motoman, Motoplus Reference (API Function Specifications)
+.. [#ur_psman] Universal Robots, Polyscope Manual, Version 3.9 (en)
+.. [#yask_fs100om] Yaskawa, FS100 Operator's Manual, No. RE-CSO-A043
 
 
 Copyright
