@@ -130,7 +130,7 @@ It is expected that in most cases ``flange`` will be a child of the last physica
 This frame shall also not be changed by users.
 
 Rationale: this separates the (physical) attachment point for EEFs from the mathematical TCP frame (which don't necessarily have to coincide for all robots, and also don't need to have the same orientation).
-This makes attaching EEF models straightfoward as no additional rotations are needed to align the EEF model with the robot flange link.
+This makes attaching EEF models straightforward as no additional rotations are needed to align the EEF model with the robot flange link.
 
 
 tool0
@@ -146,7 +146,7 @@ It is however expected that in most cases ``tool0`` will be a child of the ``fla
 Whenever specific configurations require this other links may be used, but such deviations should be well justified and well documented (suitable candidates include the 6th or 7th link of industrial serial manipulators).
 
 ``tool0`` must not be changed - neither its location nor its orientation.
-Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF subhierarchies) and should be named appropriately (see `Application-Specific Tool Frames`_).
+Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF sub-hierarchies) and should be named appropriately (see `Application-Specific Tool Frames`_).
 
 ``tool0`` shall not have any geometry associated with it.
 
@@ -166,7 +166,7 @@ These names have very little semantic value, and the purpose of such TF frames c
 
 Names with low semantic value are to be avoided in general, but in the case of robot tool frames this is especially important: use of an incorrect tool frame alone could lead to unexpected motion planning results which when executed could result in dangerous situations.
 
-Users should therefor introduce additional frames to function as tool frames and give them appropriate names.
+Users should therefore introduce additional frames to function as tool frames and give them appropriate names.
 Any name is acceptable, as long as it is semantically meaningful and follows the naming guidelines for ROS resources as described in [#wiki_naming]_.
 
 As explained in the `tool0`_ section, application-specific tool frames should be made siblings of the ``tool0`` frame and, as such, children of ``flange``.
@@ -243,13 +243,13 @@ The following shows an example frame hierarchy for a single serial manipulator w
           │     └ eef_link_N
           └ eef_tcp
 
-Note the '``eef_``' prefix on the links in the EEF subhierarchy to prevent name clashes with the main robot model.
+Note the '``eef_``' prefix on the links in the EEF sub-hierarchy to prevent name clashes with the main robot model.
 
 Note also that ``eef_tcp`` is a child of ``flange`` and not of ``eef_base_link``.
 This is in accordance with `Application-Specific Tool Frames`_, as the EEF's TCP (in this example) is the result of a three-point calibration which was performed relative to the flange of the robot.
 
-Multi-group (asymetric)
------------------------
+Multi-group (asymmetric)
+------------------------
 
 An example frame hierarchy for a setup that consists of two groups, a 6 axis industrial manipulator and a 2 axis positioner (or turntable).
 
@@ -302,7 +302,7 @@ Note that ``base_link`` in this example is the root of the entire robot structur
 Vendor Nomenclature Mapping
 ===========================
 
-This section lists the correspondance between vendor-specific frame nomenclature and the frame names as defined by this REP.
+This section shows a mapping between vendor-specific frame nomenclature and the frame names as defined by this REP.
 
 Note that for most vendors, ``tool0`` corresponds to an *all-zeros* tool frame configuration as described in the `tool0`_ section.
 The names listed here in the *Vendor Name* column refer to the generic names for frames as used in the documentation of the control systems of the respective vendors instead of specific configurations for those settings or variables.
