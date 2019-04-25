@@ -346,7 +346,7 @@ References
 .. [#epson_spelp] EPSON, RC+, SPEL Language Reference
 .. [#r30ia_handlingtool] FANUC Robot Series, R-30iA, Handling Tool, Operator's Manual
 .. [#r30ia_karel] FANUC Robot series, R-30iA, KAREL Function, Operator's Manual
-.. [#kuka_krl] KUKA Roboter, System Software, Operating and Programming Instructions for System Integrators
+.. [#kuka_krl] KUKA Roboter GmbH, KUKA System Software 8.3, Operating and Programming Instructions for System Integrators
 .. [#staubli_val3] Stäubli, VAL3 Reference Manual
 .. [#urscript_manual] Universal Robots, The URScript Programming Language
 .. [#motoman_inform] Yaskawa, Motoman, Instructions for Inform Language
