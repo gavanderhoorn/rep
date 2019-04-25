@@ -80,11 +80,12 @@ As such, this frame is exempt from the requirement to follow orientation convent
 
 Examples of vendor-specific names for this frame are *World* (Fanuc, Staübli), *ROBROOT* (KUKA) and *Base* (ABB, Denso, Kawasaki, Mitsubishi and Yaskawa Motoman).
 
-Any frame is acceptable as the parent of ``base`` (so not just ``base_link``), as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint) and the location and orientation of the frame always correspond to the controller's internal default Cartesian frame.
+Any frame is acceptable as the parent of ``base``, as long as the transform between parent and ``base`` is fixed (i.e.: not across a movable joint) and the location and orientation of the frame always correspond to the controller's internal default Cartesian frame.
+As many serial manipulators share a common design, it is expected however that ``base_link`` will often be the parent of ``base``, connected by a ``fixed`` joint with a suitable transform.
 
 ``base`` shall not have any geometry associated with it.
 
-Finally: ``base`` may be part of the (main) kinematic chain, but this is not required.
+Finally: ``base`` may be part of the (main) kinematic chain, but this is not required (ie: it could be a *leaf* frame).
 Frame hierarchies must however support transforms from anywhere in the chain to ``base`` and vice-versa (for example: from ``base`` to ``tool0``, or from ``link_4`` to ``base``).
 
 Rationale: for many industrial robots, the location of the ROS ``base_link`` frame is not necessarily coincident with the origin of their main Cartesian coordinate system.
