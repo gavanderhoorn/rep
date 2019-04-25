@@ -25,14 +25,15 @@ In order to make it possible for ROS applications to refer to these coordinate f
 
 REP 105 [#REP105]_ and REP 120 [#REP120]_ already define frames for mobile bases and humanoid robots.
 This REP extends the set of standardised frames in ROS and labels important locations on serial industrial manipulators such as the origin of the main Cartesian coordinate system, the flange and the tool centre point.
-Finally, it provides naming guidelines for intermediate link frames and application specific tool frames.
+Finally, it provides naming guidelines for intermediate link frames and application-specific tool frames.
 
 
 Definitions
 ===========
 
 End Effector (EEF)
-    A device at the end of a robotic arm, designed to interact with the environment. The exact nature of this device depends on the application of the robot.
+    A device at the end of a robotic arm, designed to interact with the environment.
+    The exact nature of this device depends on the application of the robot.
 End Of Arm Tooling (EOAT)
     Alternative name for *End Effector*.
 Tool Centre Point (TCP)
