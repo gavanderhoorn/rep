@@ -370,34 +370,24 @@ References
 
 .. [#REP103] REP 103, Standard Units of Measure and Coordinate Conventions
    (http://www.ros.org/reps/rep-0103.html)
-
 .. [#REP105] REP 105, Coordinate Frames for Mobile Platforms
    (http://www.ros.org/reps/rep-0105.html)
-
 .. [#REP120] REP 120, Coordinate Frames for Humanoids Robots
    (http://www.ros.org/reps/rep-0120.html)
-
 .. [#RFC2119] Key words for use in RFCs to Indicate Requirement Levels, on-line, retrieved 5 October 2015
    (https://tools.ietf.org/html/rfc2119)
-
 .. [4] tool0: ROS-I vs industrial controllers
    (https://github.com/ros-industrial/ros_industrial_issues/issues/24)
-
 .. [5] Fix for issues #49 and #95: ros-i compatible base and tool0 frames
    (https://github.com/ros-industrial/universal_robot/pull/200#issuecomment-102980913)
-
 .. [6] Create a URDF for an Industrial Robot
    (http://wiki.ros.org/Industrial/Tutorials/Create%20a%20URDF%20for%20an%20Industrial%20Robot)
-
 .. [7] Create a MoveIt Package for an Industrial Robot
    (http://wiki.ros.org/Industrial/Tutorials/Create_a_MoveIt_Pkg_for_an_Industrial_Robot)
-
 .. [8] Working with ROS-Industrial Robot Support Packages
    (http://wiki.ros.org/Industrial/Tutorials/WorkingWithRosIndustrialRobotSupportPackages)
-
 .. [#wiki_naming] Names, ROS wiki, on-line, retrieved 24 April 2016
    (http://wiki.ros.org/Names)
-
 .. [#abb_opman] ABB Robotics, Operating Manual, RobotStudio, 5.14, 3HAC032104-001, Revision F
 .. [#comau_progg] Comau Robotics Instruction Handbook, C5G Controller Unit, MOTION PROGRAMMING, System Software Rel. 1.10, CR00757608_en-04/2011.07
 .. [#denso_pac] DENSO Robot, PAC Programmer's Manual, Program Design and Commands
