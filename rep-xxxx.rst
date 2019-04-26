@@ -119,11 +119,11 @@ Finally: making ``link_n`` frames coincident with their counterparts on a robot 
 flange
 ''''''
 
-The ``flange`` frame is the frame that should be used to attach EEF models to the main kinematic chain of the robot.
+The ``flange`` frame is the frame that should be used to attach EEF models to the main kinematic chain of a ROS robot model.
 In contrast to ``tool0``, this frame shall always be oriented such that it complies with REP 103 [#REP103]_.
 Positive X (``x+``) must always point away from the last link (ie: in the 'forward' direction for a world-aligned robot model).
 
-Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), and ``flange`` is located in the correct location and has the correct orientation.
+Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), it is located in the correct location and has the correct orientation.
 It is expected that in most cases ``flange`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
 
 ``flange`` shall not have any geometry associated with it.
@@ -131,7 +131,7 @@ It is expected that in most cases ``flange`` will be a child of the last physica
 This frame shall also not be changed by users.
 
 Rationale: this separates the (physical) attachment point for EEFs from the mathematical TCP frame (which don't necessarily have to coincide for all robots, and also don't need to have the same orientation).
-This makes attaching EEF models straightforward as no additional rotations are needed to align the EEF model with the robot flange link.
+This makes attaching EEF models straightforward as no additional rotations are needed to align the EEF model with the robot flange link in a ROS model.
 
 
 tool0
