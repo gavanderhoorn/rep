@@ -211,6 +211,7 @@ Example Frame Hierarchies
 =========================
 
 This section shows a number of example frame hierarchies representative of typical kinematic configurations in industrial robotics and related contexts.
+Each section includes an overview of the transform tree and a short description highlighting some noteworthy aspects.
 
 Single manipulator
 ------------------
@@ -225,6 +226,8 @@ This particular example has ``base`` as a direct child of ``base_link``, the mai
       └ link_N
         └ flange
           └ tool0
+
+Note the absence of any prefixes: as there is only this single robot, they are not required.
 
 Single manipulator with EEF
 ---------------------------
@@ -302,10 +305,10 @@ Note that ``base_link`` in this example is the root of the entire robot structur
 Vendor Nomenclature Mapping
 ===========================
 
-This section shows a mapping between vendor-specific frame nomenclature and the frame names as defined by this REP.
+This section shows a mapping between vendor-specific frame nomenclature and the ``base`` and ``tool0`` frames as defined by this REP.
 
 Note that for most vendors, ``tool0`` corresponds to an *all-zeros* tool frame configuration as described in the `tool0`_ section.
-The names listed here in the *Vendor Name* column refer to the generic names for frames as used in the documentation of the control systems of the respective vendors instead of specific configurations for those settings or variables.
+The names listed here in the *Vendor Name* column refer to the generic names for frames as used in the documentation of the control systems of the respective vendors, and not necessarily to any specific configurations of those frames.
 
 +------------------+------------+---------------+
 |                  | This REP   | Vendor Name   |
