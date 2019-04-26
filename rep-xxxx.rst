@@ -56,9 +56,10 @@ base_link
 '''''''''
 
 The coordinate frame called ``base_link`` shall be rigidly attached to the robot root body.
-For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount.
+For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount (ie: its attachment to the world).
+If a robot is mounted with a different part to its surroundings, it is acceptable to place ``base_link`` in a different location.
 
-Note that this frame is not required to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot (ie: its attachment to the world).
+Note that this frame is not required to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot.
 
 This frame shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
 Discrepancies between a controller's internal Cartesian frame and REP 103 [#REP103]_ shall be resolved by defining the correct transform between ``base_link`` (or any other convenient frame) and the ``base`` frame (see `base`_).
