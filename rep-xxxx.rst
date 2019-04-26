@@ -126,12 +126,10 @@ Positive X (``x+``) must always point away from the last link (ie: in the 'forwa
 Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), it is located in the correct location and has the correct orientation.
 It is expected that in most cases ``flange`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
 
-Note that this frame is a virtual frame included in robot models for the convenient attachment of EEF model subassemblies.
-As such there is no requirement for ``flange`` to match a particular frame potentially defined by a robot controller.
+As this frame is a virtual frame included here for the convenient attachment of EEF subassemblies to base robot models in ROS, there is no requirement for ``flange`` to be coincident with a *flange* frame if one is defined by the robot controller.
+This REP does however recommend robot model authors to do so in those cases, as it is expected to reduce potential confusion and better match user expectations.
 
 ``flange`` shall not have any geometry associated with it.
-
-This frame shall also not be changed by users.
 
 Rationale: this separates the (physical) attachment point for EEFs from the mathematical TCP frame (which don't necessarily have to coincide for all robots, and also don't need to have the same orientation).
 This makes attaching EEF models straightforward as no additional rotations are needed to align the EEF model with the robot flange link in a ROS model.
