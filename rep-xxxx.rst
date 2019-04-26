@@ -64,7 +64,7 @@ Note that this frame is not required to be coincident with the origin of the con
 This frame shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
 Discrepancies between a controller's internal Cartesian frame and REP 103 [#REP103]_ shall be resolved by defining the correct transform between ``base_link`` (or any other convenient frame) and the ``base`` frame (see `base`_).
 
-``base_link`` may optionally have geometry assigned to it.
+``base_link`` may optionally have geometry (ie: 3D models) assigned to it.
 
 No further special treatment of this frame is required.
 
