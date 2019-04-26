@@ -199,7 +199,7 @@ Frame Authorities
 
 The frames described in this REP will typically be part of the static description of robot models encoded in urdfs or xacros.
 As such, the frame authority is expected to be an instance of ``robot_state_publisher``, but this is not required.
-In cases where (complicated) kinematics preclude the use of standard nodes, a specialised node capable of publishing the necessary frames could be used.
+In cases where the kinematics of a particular robot model preclude the use of standard nodes, a specialised node capable of publishing the necessary frames could be used.
 
 
 Exceptions
