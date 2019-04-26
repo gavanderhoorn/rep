@@ -103,17 +103,17 @@ As almost all manipulators are expected to require multiple such frames, each sh
 These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
 If desirable, discrepancies between a controller's internal link-local frames and REP 103 [#REP103]_ may be resolved by defining a rigid transform between ``link_n`` and a suitably named proxy-frame (see `Robots with Left-handed Coordinate Systems`_ for instance).
 
-If link-local frames are defined by the robot controller, authors should strive to make the location of ``link`` frames coincident with those frames, if they are externally accessible and/or usable for these purposes.
+If link-local frames are defined by the robot controller, authors should strive to make the location of ``link_n`` frames coincident with those frames, if they are externally accessible and/or usable for these purposes.
 
 ``link`` frames are expected to have robot geometry associated with them (as they provide a natural location for it), but this is not required.
 
 Rationale: naming schemes for links and joints can vary between industrial robot manufacturers and even between robot series produced by the same manufacturer.
-Allowing authors to import such implementation details into their robot models would immediately reduce reusability of both the models as well as of applications, as the latter would have to be made aware of the specific naming scheme being used (either through configuration or code adaptation).
-Introducing a vendor-neutral naming scheme avoids this.
+Allowing authors to import such implementation details into their robot models would immediately reduce reusability of both the models as well as of applications, as the latter would have to be changed to be compatible with the specific naming scheme being used (either through configuration or code adaptation).
+Introducing a vendor-neutral naming scheme avoids this and also reduces the chances of misconfiguration.
 
-In addition, harmonising link frame names across ROS supported (industrial) robots also allows users to make assumptions about such names and their semantics, facilitating development.
+In addition, harmonising link frame names across ROS supported (industrial) robots also allows users to make assumptions about such names and their semantics, facilitating development and workflows.
 
-Finally: making ``link`` frames coincident with their counterparts on a robot controller allows such frames to be used as an intermediary or bridge and provides a mapping that links the ROS TF tree with controller- and vendor-specific coordinate systems.
+Finally: making ``link_n`` frames coincident with their counterparts on a robot controller allows such frames to be used as an intermediary or bridge and provides a mapping that links the ROS TF tree with controller- and vendor-specific coordinate systems.
 
 
 flange
