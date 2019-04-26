@@ -140,21 +140,21 @@ tool0
 The ``tool0`` frame (pronounced: "tool-zero") shall match exactly an *all-zeros* TCP as defined by the robot controller.
 As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 [#REP103]_.
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
-In this case the only difference between ``tool0`` and ``flange`` is the orientation.
+In this case the only expected difference between ``tool0`` and ``flange`` is the orientation.
 
 Any frame is acceptable as the parent of ``tool0``, as long as the transform between that parent and ``tool0`` is fixed (i.e.: not across a movable joint), and ``tool0`` is located in the correct location and has the correct orientation.
 It is however expected that in most cases ``tool0`` will be a child of the ``flange`` frame.
 Whenever specific configurations require this other links may be used, but such deviations should be well justified and well documented (suitable candidates include the 6th or 7th link of industrial serial manipulators).
 
-``tool0`` must not be changed - neither its location nor its orientation.
+Neither the location nor the orientation of ``tool0`` in a robot model may be changed by users.
 Instead, application-specific tool frames should be added as siblings of ``tool0`` (or could be defined in EEF sub-hierarchies) and should be named appropriately (see `Application-Specific Tool Frames`_).
 
 ``tool0`` shall not have any geometry associated with it.
 
 Rationale: by not allowing changes to the location or orientation of ``tool0``, re-use of libraries such as kinematics solvers that are generated in an off-line fashion for a particular kinematic chain configuration becomes feasible.
-It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by the motion planner or IK library based on configuration by the user, or manually before submitting goal poses to the planner).
+It is the user's responsibility then to make sure that poses are transformed to the appropriate coordinate system before passing them on to such libraries (this could be done automatically by a motion planner or IK library based on configuration by the user, or manually before submitting goal poses to a planner).
 Additionally: the purpose of ``tool0`` is to encode the location of an all-zeros or unconfigured tool frame.
-As such, any changes to it would make it no longer a default frame and would defeat its purpose.
+Any changes to it would make it no longer match this default frame and would thereby defeat its purpose.
 
 Refer to `Vendor Nomenclature Mapping`_ for examples of vendor-specific names for this frame.
 
