@@ -34,8 +34,6 @@ Definitions
 End Effector (EEF)
     A device at the end of a robotic arm, designed to interact with the environment.
     The exact nature of this device depends on the application of the robot.
-End Of Arm Tooling (EOAT)
-    Alternative name for *End Effector*.
 Tool Centre Point (TCP)
     Point in relation to which all robot positioning is defined or the origin of the tool's coordinate frame.
 
