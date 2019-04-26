@@ -126,6 +126,9 @@ Positive X (``x+``) must always point away from the last link (ie: in the 'forwa
 Any frame is acceptable as the parent of ``flange``, as long as the transform between that parent and ``flange`` is fixed (i.e.: not across a movable joint), it is located in the correct location and has the correct orientation.
 It is expected that in most cases ``flange`` will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).
 
+Note that this frame is a virtual frame included in robot models for the convenient attachment of EEF model subassemblies.
+As such there is no requirement for ``flange`` to match a particular frame potentially defined by a robot controller.
+
 ``flange`` shall not have any geometry associated with it.
 
 This frame shall also not be changed by users.
