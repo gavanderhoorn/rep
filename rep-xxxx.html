@@ -228,8 +228,9 @@ The exact nature of this device depends on the application of the robot.</dd>
 <div class="section" id="base-link">
 <h3><a class="toc-backref" href="#id38">base_link</a></h3>
 <p>The coordinate frame called <tt class="docutils literal">base_link</tt> shall be rigidly attached to the robot root body.
-For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount.</p>
-<p>Note that this frame is not required to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot (ie: its attachment to the world).</p>
+For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount (ie: its attachment to the world).
+If a robot is mounted with a different part to its surroundings, it is acceptable to place <tt class="docutils literal">base_link</tt> in a different location.</p>
+<p>Note that this frame is not required to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot.</p>
 <p>This frame shall follow ROS conventions for both chirality and orientation as set forth in REP 103 <a class="footnote-reference" href="#rep103" id="id4">[1]</a>.
 Discrepancies between a controller's internal Cartesian frame and REP 103 <a class="footnote-reference" href="#rep103" id="id5">[1]</a> shall be resolved by defining the correct transform between <tt class="docutils literal">base_link</tt> (or any other convenient frame) and the <tt class="docutils literal">base</tt> frame (see <a class="reference internal" href="#base">base</a>).</p>
 <p><tt class="docutils literal">base_link</tt> may optionally have geometry assigned to it.</p>
