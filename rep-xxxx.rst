@@ -103,7 +103,7 @@ As almost all manipulators are expected to require multiple such frames, each sh
 These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 [#REP103]_.
 If desirable, discrepancies between a controller's internal link-local frames and REP 103 [#REP103]_ may be resolved by defining a rigid transform between ``link_n`` and a suitably named proxy-frame (see `Robots with Left-handed Coordinate Systems`_ for instance).
 
-If similar frames are defined by the robot controller, authors should strive to make the location of ``link`` frames coincident with those frames, if they are externally accessible and/or usable for these purposes.
+If link-local frames are defined by the robot controller, authors should strive to make the location of ``link`` frames coincident with those frames, if they are externally accessible and/or usable for these purposes.
 
 ``link`` frames are expected to have robot geometry associated with them (as they provide a natural location for it), but this is not required.
 
