@@ -9,7 +9,7 @@ DO NOT USE THIS HTML FILE AS YOUR TEMPLATE!
  
   <meta name="google-site-verification" content="CjkdY6BqKWAVmQ78_iSq6J7ZZ9AoL7-CjFVBYGg9FU4" /> 
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="generator" content="Docutils 0.11: http://docutils.sourceforge.net/" />
+  <meta name="generator" content="Docutils 0.12: http://docutils.sourceforge.net/" />
 <script type="text/javascript"> 
  
   var _gaq = _gaq || [];
@@ -156,45 +156,45 @@ theForm.input.value=theForm.input.value
 <div class="contents topic" id="contents">
 <p class="topic-title first">Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#abstract" id="id32">Abstract</a></li>
-<li><a class="reference internal" href="#motivation" id="id33">Motivation</a></li>
-<li><a class="reference internal" href="#definitions" id="id34">Definitions</a></li>
-<li><a class="reference internal" href="#assumptions" id="id35">Assumptions</a></li>
-<li><a class="reference internal" href="#specification" id="id36">Specification</a><ul>
-<li><a class="reference internal" href="#coordinate-frames" id="id37">Coordinate Frames</a><ul>
-<li><a class="reference internal" href="#base-link" id="id38">base_link</a></li>
-<li><a class="reference internal" href="#base" id="id39">base</a></li>
-<li><a class="reference internal" href="#link-n" id="id40">link_n</a></li>
-<li><a class="reference internal" href="#flange" id="id41">flange</a></li>
-<li><a class="reference internal" href="#tool0" id="id42">tool0</a></li>
+<li><a class="reference internal" href="#abstract" id="id33">Abstract</a></li>
+<li><a class="reference internal" href="#motivation" id="id34">Motivation</a></li>
+<li><a class="reference internal" href="#definitions" id="id35">Definitions</a></li>
+<li><a class="reference internal" href="#assumptions" id="id36">Assumptions</a></li>
+<li><a class="reference internal" href="#specification" id="id37">Specification</a><ul>
+<li><a class="reference internal" href="#coordinate-frames" id="id38">Coordinate Frames</a><ul>
+<li><a class="reference internal" href="#base-link" id="id39">base_link</a></li>
+<li><a class="reference internal" href="#base" id="id40">base</a></li>
+<li><a class="reference internal" href="#link-n" id="id41">link_n</a></li>
+<li><a class="reference internal" href="#flange" id="id42">flange</a></li>
+<li><a class="reference internal" href="#tool0" id="id43">tool0</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#application-specific-tool-frames" id="id43">Application-Specific Tool Frames</a></li>
-<li><a class="reference internal" href="#dual-arm-or-multi-group-robots" id="id44">Dual-arm or Multi-group Robots</a></li>
-<li><a class="reference internal" href="#robots-with-left-handed-coordinate-systems" id="id45">Robots with Left-handed Coordinate Systems</a></li>
-<li><a class="reference internal" href="#frame-authorities" id="id46">Frame Authorities</a></li>
-<li><a class="reference internal" href="#exceptions" id="id47">Exceptions</a></li>
+<li><a class="reference internal" href="#application-specific-tool-frames" id="id44">Application-Specific Tool Frames</a></li>
+<li><a class="reference internal" href="#dual-arm-or-multi-group-robots" id="id45">Dual-arm or Multi-group Robots</a></li>
+<li><a class="reference internal" href="#robots-with-left-handed-coordinate-systems" id="id46">Robots with Left-handed Coordinate Systems</a></li>
+<li><a class="reference internal" href="#frame-authorities" id="id47">Frame Authorities</a></li>
+<li><a class="reference internal" href="#exceptions" id="id48">Exceptions</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#example-frame-hierarchies" id="id48">Example Frame Hierarchies</a><ul>
-<li><a class="reference internal" href="#single-manipulator" id="id49">Single manipulator</a></li>
-<li><a class="reference internal" href="#single-manipulator-with-eef" id="id50">Single manipulator with EEF</a></li>
-<li><a class="reference internal" href="#multi-group-asymmetric" id="id51">Multi-group (asymmetric)</a></li>
-<li><a class="reference internal" href="#multi-group-symmetric" id="id52">Multi-group (symmetric)</a></li>
+<li><a class="reference internal" href="#example-frame-hierarchies" id="id49">Example Frame Hierarchies</a><ul>
+<li><a class="reference internal" href="#single-manipulator" id="id50">Single manipulator</a></li>
+<li><a class="reference internal" href="#single-manipulator-with-eef" id="id51">Single manipulator with EEF</a></li>
+<li><a class="reference internal" href="#multi-group-asymmetric" id="id52">Multi-group (asymmetric)</a></li>
+<li><a class="reference internal" href="#multi-group-symmetric" id="id53">Multi-group (symmetric)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#vendor-nomenclature-mapping" id="id53">Vendor Nomenclature Mapping</a></li>
-<li><a class="reference internal" href="#compliance" id="id54">Compliance</a></li>
-<li><a class="reference internal" href="#references" id="id55">References</a></li>
-<li><a class="reference internal" href="#copyright" id="id56">Copyright</a></li>
+<li><a class="reference internal" href="#vendor-nomenclature-mapping" id="id54">Vendor Nomenclature Mapping</a></li>
+<li><a class="reference internal" href="#compliance" id="id55">Compliance</a></li>
+<li><a class="reference internal" href="#references" id="id56">References</a></li>
+<li><a class="reference internal" href="#copyright" id="id57">Copyright</a></li>
 </ul>
 </div>
 <div class="section" id="abstract">
-<h1><a class="toc-backref" href="#id32">Abstract</a></h1>
+<h1><a class="toc-backref" href="#id33">Abstract</a></h1>
 <p>This REP specifies naming conventions and semantics for coordinate frames and links of serial industrial manipulators that are used with ROS.</p>
 </div>
 <div class="section" id="motivation">
-<h1><a class="toc-backref" href="#id33">Motivation</a></h1>
+<h1><a class="toc-backref" href="#id34">Motivation</a></h1>
 <p>Developers of packages aimed at serial industrial manipulators need a shared convention for coordinate frames in order to better integrate and re-use software components.
 Consistent naming of frames and standardisation of semantics allows for re-use of not only software but also of experience and tooling.</p>
 <p>In addition, commercially available industrial robot controllers already define a number of Cartesian coordinate frames for users to define poses in and to refer to when manually controlling the robot (i.e.: while jogging or programming using teach-in).
@@ -204,7 +204,7 @@ This REP extends the set of standardised frames in ROS and labels important loca
 Finally, it provides naming guidelines for intermediate link frames and application-specific tool frames.</p>
 </div>
 <div class="section" id="definitions">
-<h1><a class="toc-backref" href="#id34">Definitions</a></h1>
+<h1><a class="toc-backref" href="#id35">Definitions</a></h1>
 <dl class="docutils">
 <dt>End Effector (EEF)</dt>
 <dd>A device at the end of a robotic arm, designed to interact with the environment.
@@ -214,33 +214,34 @@ The exact nature of this device depends on the application of the robot.</dd>
 </dl>
 </div>
 <div class="section" id="assumptions">
-<h1><a class="toc-backref" href="#id35">Assumptions</a></h1>
+<h1><a class="toc-backref" href="#id36">Assumptions</a></h1>
 <ol class="arabic simple">
 <li>The key words <em>must</em>, <em>must not</em>, <em>required</em>, <em>shall</em>, <em>shall not</em>, <em>should</em>, <em>should not</em>, <em>recommended</em>, <em>may</em>, and <em>optional</em> in this document are to be interpreted as defined in <a class="footnote-reference" href="#rfc2119" id="id3">[9]</a>.</li>
+<li>All coordinate systems defined in this REP follow REP 103 <a class="footnote-reference" href="#rep103" id="id4">[1]</a> for both chirality and (body-local) axis orientation conventions.</li>
 </ol>
 </div>
 <div class="section" id="specification">
-<h1><a class="toc-backref" href="#id36">Specification</a></h1>
+<h1><a class="toc-backref" href="#id37">Specification</a></h1>
 <div class="section" id="coordinate-frames">
-<h2><a class="toc-backref" href="#id37">Coordinate Frames</a></h2>
+<h2><a class="toc-backref" href="#id38">Coordinate Frames</a></h2>
 <div class="section" id="base-link">
-<h3><a class="toc-backref" href="#id38">base_link</a></h3>
+<h3><a class="toc-backref" href="#id39">base_link</a></h3>
 <p>The coordinate frame called <tt class="docutils literal">base_link</tt> shall be rigidly attached to the robot root body.
 For industrial manipulators, this frame is expected to be located at the bottom of the first link - the base of the robot, or the surface that forms the robot's base mount (ie: its attachment to the world).
 If a robot is mounted with a different part to its surroundings, it is acceptable to place <tt class="docutils literal">base_link</tt> in a different location.</p>
 <p>Note that this frame is not required to be coincident with the origin of the controller's Cartesian frame, but rather it should be located in the logical base position of the robot.</p>
-<p>This frame shall follow ROS conventions for both chirality and orientation as set forth in REP 103 <a class="footnote-reference" href="#rep103" id="id4">[1]</a>.
-Discrepancies between a controller's internal Cartesian frame and REP 103 <a class="footnote-reference" href="#rep103" id="id5">[1]</a> shall be resolved by defining the correct transform between <tt class="docutils literal">base_link</tt> (or any other convenient frame) and the <tt class="docutils literal">base</tt> frame (see <a class="reference internal" href="#base">base</a>).</p>
+<p>This frame shall follow ROS conventions for both chirality and orientation as set forth in REP 103 <a class="footnote-reference" href="#rep103" id="id5">[1]</a>.
+Discrepancies between a controller's internal Cartesian frame and REP 103 <a class="footnote-reference" href="#rep103" id="id6">[1]</a> shall be resolved by defining the correct transform between <tt class="docutils literal">base_link</tt> (or any other convenient frame) and the <tt class="docutils literal">base</tt> frame (see <a class="reference internal" href="#base">base</a>).</p>
 <p><tt class="docutils literal">base_link</tt> may optionally have geometry (ie: 3D models) assigned to it.</p>
 <p>No further special treatment of this frame is required.</p>
 <p>Rationale: this is the standard ROS <tt class="docutils literal">base_link</tt> frame, but used in the context of industrial robots.
 As this frame is by convention considered the start of a ROS kinematic (sub) chain, using it in the same way in models of serial manipulators is strongly recommended, as this facilitates integration with other ROS tools and infrastructure.</p>
 </div>
 <div class="section" id="base">
-<h3><a class="toc-backref" href="#id39">base</a></h3>
+<h3><a class="toc-backref" href="#id40">base</a></h3>
 <p>The <tt class="docutils literal">base</tt> frame shall be coincident with the default Cartesian coordinate system as defined by the industrial robot controller.
 Its purpose is to allow users to transform poses from a ROS application into the Cartesian base frame of the robot.
-As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 <a class="footnote-reference" href="#rep103" id="id6">[1]</a>.</p>
+As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 <a class="footnote-reference" href="#rep103" id="id7">[1]</a>.</p>
 <p>Any frame is acceptable as the parent of <tt class="docutils literal">base</tt>, as long as the transform between parent and <tt class="docutils literal">base</tt> is fixed (i.e.: not across a movable joint) and the location and orientation of the frame always correspond to the controller's internal default Cartesian frame.
 As many serial manipulators share a common design, it is expected however that <tt class="docutils literal">base_link</tt> will often be the parent of <tt class="docutils literal">base</tt>, connected by a <tt class="docutils literal">fixed</tt> joint with a suitable transform.</p>
 <p><tt class="docutils literal">base</tt> shall not have any geometry associated with it.</p>
@@ -252,11 +253,11 @@ The <tt class="docutils literal">base</tt> frame is intended to be used as an in
 <p>Refer to <a class="reference internal" href="#vendor-nomenclature-mapping">Vendor Nomenclature Mapping</a> for examples of vendor-specific names for this frame.</p>
 </div>
 <div class="section" id="link-n">
-<h3><a class="toc-backref" href="#id40">link_n</a></h3>
+<h3><a class="toc-backref" href="#id41">link_n</a></h3>
 <p><tt class="docutils literal">link</tt> frames should be used for all link-local frames in the robot's kinematic chain.
 As almost all manipulators are expected to require multiple such frames, each should be suffixed with a non-negative integer corresponding to the natural order of the frame in the chain from <tt class="docutils literal">base_link</tt> to <tt class="docutils literal">flange</tt> (ie: <tt class="docutils literal">link_1</tt>, <tt class="docutils literal">link_2</tt>, .., <tt class="docutils literal">link_n; n ∈ ℕ</tt>).</p>
-<p>These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 <a class="footnote-reference" href="#rep103" id="id7">[1]</a>.
-If desirable, discrepancies between a controller's internal link-local frames and REP 103 <a class="footnote-reference" href="#rep103" id="id8">[1]</a> may be resolved by defining a rigid transform between <tt class="docutils literal">link_n</tt> and a suitably named proxy-frame (see <a class="reference internal" href="#robots-with-left-handed-coordinate-systems">Robots with Left-handed Coordinate Systems</a> for instance).</p>
+<p>These frames shall follow ROS conventions for both chirality and orientation as set forth in REP 103 <a class="footnote-reference" href="#rep103" id="id8">[1]</a>.
+If desirable, discrepancies between a controller's internal link-local frames and REP 103 <a class="footnote-reference" href="#rep103" id="id9">[1]</a> may be resolved by defining a rigid transform between <tt class="docutils literal">link_n</tt> and a suitably named proxy-frame (see <a class="reference internal" href="#robots-with-left-handed-coordinate-systems">Robots with Left-handed Coordinate Systems</a> for instance).</p>
 <p>If link-local frames are defined by the robot controller, authors should strive to make the location of <tt class="docutils literal">link_n</tt> frames coincident with those frames, if they are externally accessible and/or usable for these purposes.</p>
 <p><tt class="docutils literal">link</tt> frames are expected to have robot geometry associated with them (as they provide a natural location for it), but this is not required.</p>
 <p>Rationale: naming schemes for links and joints can vary between industrial robot manufacturers and even between robot series produced by the same manufacturer.
@@ -266,9 +267,9 @@ Introducing a vendor-neutral naming scheme avoids this and also reduces the chan
 <p>Finally: making <tt class="docutils literal">link_n</tt> frames coincident with their counterparts on a robot controller allows such frames to be used as an intermediary or bridge and provides a mapping that links the ROS TF tree with controller- and vendor-specific coordinate systems.</p>
 </div>
 <div class="section" id="flange">
-<h3><a class="toc-backref" href="#id41">flange</a></h3>
+<h3><a class="toc-backref" href="#id42">flange</a></h3>
 <p>The <tt class="docutils literal">flange</tt> frame is the frame that should be used to attach EEF models to the main kinematic chain of a ROS robot model.
-In contrast to <tt class="docutils literal">tool0</tt>, this frame shall always be oriented such that it complies with REP 103 <a class="footnote-reference" href="#rep103" id="id9">[1]</a>.
+In contrast to <tt class="docutils literal">tool0</tt>, this frame shall always be oriented such that it complies with REP 103 <a class="footnote-reference" href="#rep103" id="id10">[1]</a>.
 Positive X (<tt class="docutils literal">x+</tt>) must always point away from the last link (ie: in the 'forward' direction for a world-aligned robot model).</p>
 <p>Any frame is acceptable as the parent of <tt class="docutils literal">flange</tt>, as long as the transform between that parent and <tt class="docutils literal">flange</tt> is fixed (i.e.: not across a movable joint), it is located in the correct location and has the correct orientation.
 It is expected that in most cases <tt class="docutils literal">flange</tt> will be a child of the last physical link of a robot's kinematic chain (ie: the 6th or 7th link for a standard industrial serial manipulator).</p>
@@ -279,9 +280,9 @@ This REP does however recommend robot model authors to do so in those cases, as 
 This makes attaching EEF models straightforward as no additional rotations are needed to align the EEF model with the robot flange link in a ROS model.</p>
 </div>
 <div class="section" id="tool0">
-<h3><a class="toc-backref" href="#id42">tool0</a></h3>
+<h3><a class="toc-backref" href="#id43">tool0</a></h3>
 <p>The <tt class="docutils literal">tool0</tt> frame (pronounced: &quot;tool-zero&quot;) shall match exactly an <em>all-zeros</em> TCP as defined by the robot controller.
-As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 <a class="footnote-reference" href="#rep103" id="id10">[1]</a>.
+As such, this frame is exempt from the requirement to follow orientation conventions as described in REP 103 <a class="footnote-reference" href="#rep103" id="id11">[1]</a>.
 For most controllers, an all-zeros TCP is equal to an unconfigured (or default) TCP, which typically lies on the robot's physical mounting flange.
 In this case the only expected difference between <tt class="docutils literal">tool0</tt> and <tt class="docutils literal">flange</tt> is the orientation.</p>
 <p>Any frame is acceptable as the parent of <tt class="docutils literal">tool0</tt>, as long as the transform between that parent and <tt class="docutils literal">tool0</tt> is fixed (i.e.: not across a movable joint), and <tt class="docutils literal">tool0</tt> is located in the correct location and has the correct orientation.
@@ -298,46 +299,46 @@ Any changes to it would make it no longer match this default frame and would the
 </div>
 </div>
 <div class="section" id="application-specific-tool-frames">
-<h2><a class="toc-backref" href="#id43">Application-Specific Tool Frames</a></h2>
+<h2><a class="toc-backref" href="#id44">Application-Specific Tool Frames</a></h2>
 <p>It is strongly discouraged to use <tt class="docutils literal">toolN</tt> names for application-specific tool frames, even if such a naming scheme is used by the robot controller(s) an application targets.
 These names have very little semantic value, and the purpose of such TF frames cannot be properly understood without access to additional information external to a model itself.</p>
 <p>Names with low semantic value are to be avoided in general, but in the case of robot tool frames this is especially important: use of an incorrect tool frame alone could lead to unexpected motion planning results which when executed could result in dangerous situations.</p>
 <p>Users should therefore introduce additional frames to function as tool frames and give them appropriate names.
-Any name is acceptable, as long as it is semantically meaningful and follows the naming guidelines for ROS resources as described in <a class="footnote-reference" href="#wiki-naming" id="id11">[10]</a>.</p>
+Any name is acceptable, as long as it is semantically meaningful and follows the naming guidelines for ROS resources as described in <a class="footnote-reference" href="#wiki-naming" id="id12">[10]</a>.</p>
 <p>As explained in the <a class="reference internal" href="#tool0">tool0</a> section, application-specific tool frames should be made siblings of the <tt class="docutils literal">tool0</tt> frame and, as such, children of <tt class="docutils literal">flange</tt>.
-Not using <tt class="docutils literal">tool0</tt> as parent avoids introducing additional rotations (to resolve alignment issues due to <tt class="docutils literal">tool0</tt> not adhering to REP 103 <a class="footnote-reference" href="#rep103" id="id12">[1]</a>) and facilitates reuse of frame data imported from robot controllers and external devices (such as tool frame calibration results, as such results are often relative to the robot's flange).</p>
+Not using <tt class="docutils literal">tool0</tt> as parent avoids introducing additional rotations (to resolve alignment issues due to <tt class="docutils literal">tool0</tt> not adhering to REP 103 <a class="footnote-reference" href="#rep103" id="id13">[1]</a>) and facilitates reuse of frame data imported from robot controllers and external devices (such as tool frame calibration results, as such results are often relative to the robot's flange).</p>
 <p>Finally: while this REP cannot prevent users from using names with low semantic value, ignoring this recommendation should be well justified and documented.</p>
 </div>
 <div class="section" id="dual-arm-or-multi-group-robots">
-<h2><a class="toc-backref" href="#id44">Dual-arm or Multi-group Robots</a></h2>
+<h2><a class="toc-backref" href="#id45">Dual-arm or Multi-group Robots</a></h2>
 <p>This REP does not specify any special conventions for robots with multiple arms, motion groups or kinematic chains.
 The standard approach of prefixing joint and link names (with a <cite>xacro</cite> parameter for instance) to ensure uniqueness of all frames in the (combined) frame hierarchy should be used to avoid collisions.
 See the <a class="reference internal" href="#example-frame-hierarchies">Example Frame Hierarchies</a> section for examples of this.</p>
 </div>
 <div class="section" id="robots-with-left-handed-coordinate-systems">
-<h2><a class="toc-backref" href="#id45">Robots with Left-handed Coordinate Systems</a></h2>
+<h2><a class="toc-backref" href="#id46">Robots with Left-handed Coordinate Systems</a></h2>
 <p>There are industrial manipulators that use a left-handed coordinate system for poses and in robot programming.
-ROS exclusively uses a right-handed coordinate system, as described in REP 103 <a class="footnote-reference" href="#rep103" id="id13">[1]</a>.</p>
-<p>As this fundamental difference cannot be resolved by using a transform, this REP recommends to overlay REP 103 <a class="footnote-reference" href="#rep103" id="id14">[1]</a> compliant coordinate frames (ie: right-handed) and use conversion functions on the boundaries of ROS applications to convert data between such systems.</p>
+ROS exclusively uses a right-handed coordinate system, as described in REP 103 <a class="footnote-reference" href="#rep103" id="id14">[1]</a>.</p>
+<p>As this fundamental difference cannot be resolved by using a transform, this REP recommends to overlay REP 103 <a class="footnote-reference" href="#rep103" id="id15">[1]</a> compliant coordinate frames (ie: right-handed) and use conversion functions on the boundaries of ROS applications to convert data between such systems.</p>
 </div>
 <div class="section" id="frame-authorities">
-<h2><a class="toc-backref" href="#id46">Frame Authorities</a></h2>
+<h2><a class="toc-backref" href="#id47">Frame Authorities</a></h2>
 <p>The frames described in this REP will typically be part of the static description of robot models encoded in urdfs or xacros.
 As such, the frame authority is expected to be an instance of <tt class="docutils literal">robot_state_publisher</tt>, but this is not required.
 In cases where the kinematics of a particular robot model preclude the use of standard nodes, a specialised node capable of publishing the necessary frames could be used.</p>
 </div>
 <div class="section" id="exceptions">
-<h2><a class="toc-backref" href="#id47">Exceptions</a></h2>
+<h2><a class="toc-backref" href="#id48">Exceptions</a></h2>
 <p>The scope of potential robotics software is too broad to require all ROS software to follow the guidelines of this REP.
 However, choosing different conventions should be well justified, well documented, and is discouraged.</p>
 </div>
 </div>
 <div class="section" id="example-frame-hierarchies">
-<h1><a class="toc-backref" href="#id48">Example Frame Hierarchies</a></h1>
+<h1><a class="toc-backref" href="#id49">Example Frame Hierarchies</a></h1>
 <p>This section shows a number of example frame hierarchies representative of typical kinematic configurations in industrial robotics and related contexts.
 Each section includes an overview of the transform tree and a short description highlighting some noteworthy aspects.</p>
 <div class="section" id="single-manipulator">
-<h2><a class="toc-backref" href="#id49">Single manipulator</a></h2>
+<h2><a class="toc-backref" href="#id50">Single manipulator</a></h2>
 <p>The following shows an example frame hierarchy for a single serial manipulator.
 This particular example has <tt class="docutils literal">base</tt> as a direct child of <tt class="docutils literal">base_link</tt>, the main kinematic chain starting with <tt class="docutils literal">base_link</tt> and does not have any application-specific tool frame configured (ie: only has the default <tt class="docutils literal">tool0</tt> frame):</p>
 <pre class="literal-block">
@@ -352,7 +353,7 @@ base_link
 <p>Note the absence of any prefixes: as there is only this single robot, they are not required.</p>
 </div>
 <div class="section" id="single-manipulator-with-eef">
-<h2><a class="toc-backref" href="#id50">Single manipulator with EEF</a></h2>
+<h2><a class="toc-backref" href="#id51">Single manipulator with EEF</a></h2>
 <p>The following shows an example frame hierarchy for a single serial manipulator with an EEF model attached to <tt class="docutils literal">flange</tt> and one application-specific tool frame (<tt class="docutils literal">eef_tcp</tt>):</p>
 <pre class="literal-block">
 base_link
@@ -372,7 +373,7 @@ base_link
 This is in accordance with <a class="reference internal" href="#application-specific-tool-frames">Application-Specific Tool Frames</a>, as the EEF's TCP (in this example) is the result of a three-point calibration which was performed relative to the flange of the robot.</p>
 </div>
 <div class="section" id="multi-group-asymmetric">
-<h2><a class="toc-backref" href="#id51">Multi-group (asymmetric)</a></h2>
+<h2><a class="toc-backref" href="#id52">Multi-group (asymmetric)</a></h2>
 <p>An example frame hierarchy for a setup that consists of two groups, a 6 axis industrial manipulator and a 2 axis positioner (or turntable).</p>
 <p>Both are placed in the same work cell and share a common <tt class="docutils literal">world</tt> frame:</p>
 <pre class="literal-block">
@@ -395,7 +396,7 @@ world
 <p>Note the '<tt class="docutils literal">robot_</tt>' and '<tt class="docutils literal">positioner_</tt>' prefixes on all frames.</p>
 </div>
 <div class="section" id="multi-group-symmetric">
-<h2><a class="toc-backref" href="#id52">Multi-group (symmetric)</a></h2>
+<h2><a class="toc-backref" href="#id53">Multi-group (symmetric)</a></h2>
 <p>The following shows an example frame hierarchy for a dual-arm robot that consists of two identical manipulators that are mirrored around a shared base.
 Each arm sub-hierarchy has been given a prefix corresponding to its relative position:</p>
 <pre class="literal-block">
@@ -420,7 +421,7 @@ base_link
 </div>
 </div>
 <div class="section" id="vendor-nomenclature-mapping">
-<h1><a class="toc-backref" href="#id53">Vendor Nomenclature Mapping</a></h1>
+<h1><a class="toc-backref" href="#id54">Vendor Nomenclature Mapping</a></h1>
 <p>This section shows a mapping between vendor-specific frame nomenclature and the <tt class="docutils literal">base</tt> and <tt class="docutils literal">tool0</tt> frames as defined by this REP.</p>
 <p>Note that for most vendors, <tt class="docutils literal">tool0</tt> corresponds to an <em>all-zeros</em> tool frame configuration as described in the <a class="reference internal" href="#tool0">tool0</a> section.
 The names listed here in the <em>Vendor Name</em> column refer to the generic names for frames as used in the documentation of the control systems of the respective vendors, and not necessarily to any specific configurations of those frames.</p>
@@ -438,7 +439,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 </thead>
 <tbody valign="top">
 <tr><td rowspan="2">ABB
-<a class="footnote-reference" href="#abb-opman" id="id15">[11]</a></td>
+<a class="footnote-reference" href="#abb-opman" id="id16">[11]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Base</td>
 </tr>
@@ -446,7 +447,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td>TCP</td>
 </tr>
 <tr><td rowspan="2">Comau
-<a class="footnote-reference" href="#comau-progg" id="id16">[12]</a></td>
+<a class="footnote-reference" href="#comau-progg" id="id17">[12]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td><tt class="docutils literal">$BASE</tt></td>
 </tr>
@@ -454,7 +455,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td><tt class="docutils literal">$TOOL</tt></td>
 </tr>
 <tr><td rowspan="2">Denso
-<a class="footnote-reference" href="#denso-pac" id="id17">[13]</a></td>
+<a class="footnote-reference" href="#denso-pac" id="id18">[13]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Base</td>
 </tr>
@@ -462,7 +463,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td>Tool</td>
 </tr>
 <tr><td rowspan="2">Epson
-<a class="footnote-reference" href="#epson-uguide" id="id18">[14]</a></td>
+<a class="footnote-reference" href="#epson-uguide" id="id19">[14]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Robot</td>
 </tr>
@@ -470,7 +471,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td>TOOL 0</td>
 </tr>
 <tr><td rowspan="2">Fanuc
-<a class="footnote-reference" href="#fanuc-htool" id="id19">[15]</a></td>
+<a class="footnote-reference" href="#fanuc-htool" id="id20">[15]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>WORLD</td>
 </tr>
@@ -478,7 +479,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td>TOOL</td>
 </tr>
 <tr><td rowspan="2">Kawasaki
-<a class="footnote-reference" href="#kawa-opman" id="id20">[16]</a></td>
+<a class="footnote-reference" href="#kawa-opman" id="id21">[16]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Base</td>
 </tr>
@@ -486,7 +487,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td>Tool</td>
 </tr>
 <tr><td rowspan="2">KUKA
-<a class="footnote-reference" href="#kuka-kss" id="id21">[17]</a></td>
+<a class="footnote-reference" href="#kuka-kss" id="id22">[17]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td><tt class="docutils literal">$ROBROOT</tt></td>
 </tr>
@@ -494,7 +495,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td><tt class="docutils literal">$TOOL</tt></td>
 </tr>
 <tr><td rowspan="2">Mitsubishi
-<a class="footnote-reference" href="#mitsu-insman" id="id22">[18]</a></td>
+<a class="footnote-reference" href="#mitsu-insman" id="id23">[18]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Base</td>
 </tr>
@@ -502,7 +503,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 <td>Tool</td>
 </tr>
 <tr><td rowspan="2">Staübli
-<a class="footnote-reference" href="#staubli-val3" id="id23">[19]</a></td>
+<a class="footnote-reference" href="#staubli-val3" id="id24">[19]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>World</td>
 </tr>
@@ -511,7 +512,7 @@ The names listed here in the <em>Vendor Name</em> column refer to the generic na
 </tr>
 <tr><td rowspan="2">Universal
 Robots
-<a class="footnote-reference" href="#ur-psman" id="id24">[20]</a></td>
+<a class="footnote-reference" href="#ur-psman" id="id25">[20]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Base</td>
 </tr>
@@ -520,7 +521,7 @@ Robots
 </tr>
 <tr><td rowspan="2">Yaskawa
 Motoman
-<a class="footnote-reference" href="#yask-fs100om" id="id25">[21]</a></td>
+<a class="footnote-reference" href="#yask-fs100om" id="id26">[21]</a></td>
 <td><tt class="docutils literal">base</tt></td>
 <td>Robot</td>
 </tr>
@@ -531,15 +532,15 @@ Motoman
 </table>
 </div>
 <div class="section" id="compliance">
-<h1><a class="toc-backref" href="#id54">Compliance</a></h1>
-<p>This REP depends on and is compliant with REP 103 <a class="footnote-reference" href="#rep103" id="id26">[1]</a>, except where stated otherwise.</p>
+<h1><a class="toc-backref" href="#id55">Compliance</a></h1>
+<p>This REP depends on and is compliant with REP 103 <a class="footnote-reference" href="#rep103" id="id27">[1]</a>, except where stated otherwise.</p>
 </div>
 <div class="section" id="references">
-<h1><a class="toc-backref" href="#id55">References</a></h1>
+<h1><a class="toc-backref" href="#id56">References</a></h1>
 <table class="docutils footnote" frame="void" id="rep103" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>, <a class="fn-backref" href="#id7">4</a>, <a class="fn-backref" href="#id8">5</a>, <a class="fn-backref" href="#id9">6</a>, <a class="fn-backref" href="#id10">7</a>, <a class="fn-backref" href="#id12">8</a>, <a class="fn-backref" href="#id13">9</a>, <a class="fn-backref" href="#id14">10</a>, <a class="fn-backref" href="#id26">11</a>)</em> REP 103, Standard Units of Measure and Coordinate Conventions
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>, <a class="fn-backref" href="#id7">4</a>, <a class="fn-backref" href="#id8">5</a>, <a class="fn-backref" href="#id9">6</a>, <a class="fn-backref" href="#id10">7</a>, <a class="fn-backref" href="#id11">8</a>, <a class="fn-backref" href="#id13">9</a>, <a class="fn-backref" href="#id14">10</a>, <a class="fn-backref" href="#id15">11</a>, <a class="fn-backref" href="#id27">12</a>)</em> REP 103, Standard Units of Measure and Coordinate Conventions
 (<a class="reference external" href="http://www.ros.org/reps/rep-0103.html">http://www.ros.org/reps/rep-0103.html</a>)</td></tr>
 </tbody>
 </table>
@@ -564,35 +565,35 @@ Motoman
 (<a class="reference external" href="https://tools.ietf.org/html/rfc2119">https://tools.ietf.org/html/rfc2119</a>)</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id27" rules="none">
+<table class="docutils footnote" frame="void" id="id28" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[4]</td><td>tool0: ROS-I vs industrial controllers
 (<a class="reference external" href="https://github.com/ros-industrial/ros_industrial_issues/issues/24">https://github.com/ros-industrial/ros_industrial_issues/issues/24</a>)</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id28" rules="none">
+<table class="docutils footnote" frame="void" id="id29" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[5]</td><td>Fix for issues #49 and #95: ros-i compatible base and tool0 frames
 (<a class="reference external" href="https://github.com/ros-industrial/universal_robot/pull/200#issuecomment-102980913">https://github.com/ros-industrial/universal_robot/pull/200#issuecomment-102980913</a>)</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id29" rules="none">
+<table class="docutils footnote" frame="void" id="id30" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[6]</td><td>Create a URDF for an Industrial Robot
 (<a class="reference external" href="http://wiki.ros.org/Industrial/Tutorials/Create%20a%20URDF%20for%20an%20Industrial%20Robot">http://wiki.ros.org/Industrial/Tutorials/Create%20a%20URDF%20for%20an%20Industrial%20Robot</a>)</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id30" rules="none">
+<table class="docutils footnote" frame="void" id="id31" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[7]</td><td>Create a MoveIt Package for an Industrial Robot
 (<a class="reference external" href="http://wiki.ros.org/Industrial/Tutorials/Create_a_MoveIt_Pkg_for_an_Industrial_Robot">http://wiki.ros.org/Industrial/Tutorials/Create_a_MoveIt_Pkg_for_an_Industrial_Robot</a>)</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id31" rules="none">
+<table class="docutils footnote" frame="void" id="id32" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[8]</td><td>Working with ROS-Industrial Robot Support Packages
@@ -602,79 +603,79 @@ Motoman
 <table class="docutils footnote" frame="void" id="wiki-naming" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[10]</a></td><td>Names, ROS wiki, on-line, retrieved 24 April 2016
+<tr><td class="label"><a class="fn-backref" href="#id12">[10]</a></td><td>Names, ROS wiki, on-line, retrieved 24 April 2016
 (<a class="reference external" href="http://wiki.ros.org/Names">http://wiki.ros.org/Names</a>)</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="abb-opman" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[11]</a></td><td>ABB Robotics, Operating Manual, RobotStudio, 5.14, 3HAC032104-001, Revision F</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id16">[11]</a></td><td>ABB Robotics, Operating Manual, RobotStudio, 5.14, 3HAC032104-001, Revision F</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="comau-progg" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id16">[12]</a></td><td>Comau Robotics Instruction Handbook, C5G Controller Unit, MOTION PROGRAMMING, System Software Rel. 1.10, CR00757608_en-04/2011.07</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id17">[12]</a></td><td>Comau Robotics Instruction Handbook, C5G Controller Unit, MOTION PROGRAMMING, System Software Rel. 1.10, CR00757608_en-04/2011.07</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="denso-pac" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id17">[13]</a></td><td>DENSO Robot, PAC Programmer's Manual, Program Design and Commands</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id18">[13]</a></td><td>DENSO Robot, PAC Programmer's Manual, Program Design and Commands</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="epson-uguide" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id18">[14]</a></td><td>EPSON, RC+ 5.0, User's Guide, Project Management and Development, Ver.5.4, EM135S2513F</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id19">[14]</a></td><td>EPSON, RC+ 5.0, User's Guide, Project Management and Development, Ver.5.4, EM135S2513F</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="fanuc-htool" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id19">[15]</a></td><td>FANUC Robot Series, R-30iA, Handling Tool, Operator's Manual</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id20">[15]</a></td><td>FANUC Robot Series, R-30iA, Handling Tool, Operator's Manual</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="kawa-opman" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id20">[16]</a></td><td>Kawasaki Heavy Industries, Ltd., Kawasaki Robot Controller, E Series, Operation Manual, 90203-1104DED</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id21">[16]</a></td><td>Kawasaki Heavy Industries, Ltd., Kawasaki Robot Controller, E Series, Operation Manual, 90203-1104DED</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="kuka-kss" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id21">[17]</a></td><td>KUKA Roboter GmbH, KUKA System Software 8.3, Operating and Programming Instructions for System Integrators</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id22">[17]</a></td><td>KUKA Roboter GmbH, KUKA System Software 8.3, Operating and Programming Instructions for System Integrators</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="mitsu-insman" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id22">[18]</a></td><td>MITSUBISHI, Mitsubishi Industrial Robot, CR750/CR751 Series Controller, INSTRUCTION MANUAL, BFP-A8869-D</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id23">[18]</a></td><td>MITSUBISHI, Mitsubishi Industrial Robot, CR750/CR751 Series Controller, INSTRUCTION MANUAL, BFP-A8869-D</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="staubli-val3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id23">[19]</a></td><td>Stäubli, VAL3 Reference Manual</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id24">[19]</a></td><td>Stäubli, VAL3 Reference Manual</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="ur-psman" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id24">[20]</a></td><td>Universal Robots, Polyscope Manual, Version 3.9 (en)</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id25">[20]</a></td><td>Universal Robots, Polyscope Manual, Version 3.9 (en)</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="yask-fs100om" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id25">[21]</a></td><td>Yaskawa, FS100 Operator's Manual, No. RE-CSO-A043</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id26">[21]</a></td><td>Yaskawa, FS100 Operator's Manual, No. RE-CSO-A043</td></tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="copyright">
-<h1><a class="toc-backref" href="#id56">Copyright</a></h1>
+<h1><a class="toc-backref" href="#id57">Copyright</a></h1>
 <p>This document has been placed in the public domain.</p>
 </div>
 
